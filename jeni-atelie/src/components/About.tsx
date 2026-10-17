@@ -1,18 +1,18 @@
 import { m } from 'framer-motion';
 import { photos } from '../images';
 import { inView, rise, stagger } from '../hooks/motion';
-import { Arch, Sticker } from './ui';
+import { Sticker } from './ui';
 
 // Recado curto da Jeni, com uma foto real dos potes dela
 export const About = () => {
   const p = photos['jeni-potes-mesa'];
   return (
     <section aria-labelledby="sobre-t" className="mx-2 rounded-[2.5rem] bg-tone-pessego px-4 py-16 sm:mx-3 sm:px-8 lg:px-14 lg:py-24">
-      <div className="mx-auto grid max-w-[72rem] items-center gap-10 md:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-        <div className="relative mx-auto w-full max-w-[18rem]">
-          <Arch className="aspect-[3/4] bg-white/60">
-            <img srcSet={p.srcSet} sizes="18rem" src={p.src} width={p.width} height={p.height} alt={p.alt} loading="lazy" className="size-full object-cover object-[50%_25%]" />
-          </Arch>
+      <div className="mx-auto grid max-w-[72rem] items-center gap-10 md:grid-cols-[1fr_1fr] lg:gap-16">
+        <div className="relative mx-auto w-full max-w-[24rem]">
+          <div className="aspect-[3/4] overflow-hidden rounded-[2rem]">
+            <img srcSet={p.srcSet} sizes="24rem" src={p.src} width={p.width} height={p.height} alt={p.alt} loading="lazy" className="size-full object-cover object-[50%_25%]" />
+          </div>
           <Sticker tone="morango" rotate={10} className="absolute -right-4 -bottom-4">feito pela Jeni</Sticker>
         </div>
         <m.div {...inView} variants={stagger(0.08)}>

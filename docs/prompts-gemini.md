@@ -18,6 +18,16 @@ Todas as fotos seguem a mesma direção (A, morango e caramelo): fundo creme-bau
 Bright, airy, joyful food photography for a cute premium Brazilian home bakery. A generous spread of homemade treats on a soft blush-pink surface (#FFD9DF) against a seamless vanilla-cream background (#FFF4EC): a clear square dessert cup with layers of chocolate cake and passion fruit mousse topped with glossy passion fruit seeds, a strawberry covered in milk chocolate and chopped peanuts, a mini Brazilian flan with shiny caramel, two fudgy brownie squares, and a chocolate "strawberry coxinha" covered in chocolate sprinkles. Desserts grouped on the right two-thirds of the frame, the left third left clean and empty for text. Soft diffused morning light from the left, gentle shadows, camera about 30 degrees above, shallow depth of field, a few scattered crumbs, fresh strawberries and passion fruit halves as props. Colors warm and candy-like: strawberry pink, caramel, butter yellow, chocolate. Horizontal 16:9. No text, no logos, no hands, no people.
 ```
 
+## 1b. Capa larga: `capa-larga.png` (anexe a capa atual: `jeni-atelie/src/assets/img/gerada/capa.jpg`)
+
+A capa agora aparece inteira, com o título por cima da metade esquerda. Para o texto não encostar nos doces, a foto precisa ser mais larga e ter a esquerda vazia. Escolha "21:9" no formato, se o AI Studio oferecer, e baixe na maior resolução (ideal: 2560 px de largura ou mais).
+
+```
+Extend this exact photo to a wider 21:9 horizontal frame. Keep every dessert, prop, color, light and camera angle exactly as they are, and keep all of them grouped in the right half of the frame. Fill the new left half only with more of the same empty soft blush-pink tabletop and the same seamless vanilla-cream wall, smooth and uncluttered, with the same soft morning light from the left, so a title can sit there. Nothing in the left half: no crumbs, no leaves, no props, no shadows of objects. High resolution, sharp, at least 2560 pixels wide. No text, no logos, no hands, no people.
+```
+
+Salve na pasta `Fotos Gemini/` e me avise: troco a capa no site.
+
 ## 2. Brownies: `brownies.png`
 
 ```

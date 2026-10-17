@@ -5,7 +5,7 @@ import { inView, rise, stagger, useReducedMotion } from '../hooks/motion';
 import { settle } from '../theme';
 import { Cta } from './motion';
 import { photos } from '../images';
-import { Arch, Sticker } from './ui';
+import { Sticker } from './ui';
 
 export const CakeOrder = () => {
   const reduce = useReducedMotion();
@@ -15,17 +15,17 @@ export const CakeOrder = () => {
 
   return (
     <section id="encomendas" aria-labelledby="encomendas-t" className="mx-2 rounded-[2.5rem] bg-rosa px-4 py-16 sm:mx-3 sm:px-8 lg:px-14 lg:py-24">
-      <div className="mx-auto grid max-w-[80rem] items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-        <div className="relative mx-auto w-full max-w-[22rem]">
+      <div className="mx-auto grid max-w-[80rem] items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
+        <div className="relative mx-auto w-full max-w-[30rem]">
           <m.div
             initial={reduce ? false : { rotate: -8, scale: 0.9, opacity: 0 }}
             whileInView={{ rotate: 0, scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={settle}
           >
-            <Arch className="aspect-[3/4] bg-white/60">
-              <img srcSet={bolo.srcSet} sizes="(min-width: 1024px) 22rem, 80vw" src={bolo.src} width={bolo.width} height={bolo.height} alt={bolo.alt} loading="lazy" className="size-full object-cover" />
-            </Arch>
+            <div className="aspect-[3/4] overflow-hidden rounded-[2rem]">
+              <img srcSet={bolo.srcSet} sizes="(min-width: 1024px) 30rem, 90vw" src={bolo.src} width={bolo.width} height={bolo.height} alt={bolo.alt} loading="lazy" className="size-full object-cover" />
+            </div>
           </m.div>
           <Sticker tone="manteiga" rotate={-10} className="absolute -top-2 -left-2">sob encomenda</Sticker>
         </div>

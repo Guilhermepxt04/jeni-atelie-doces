@@ -6,7 +6,6 @@ import { useCart } from '../cart-context';
 import { photos, type PhotoKey } from '../images';
 import { easeOutExpo, pop } from '../theme';
 import { inView, rise, stagger } from '../hooks/motion';
-import { Arch } from './ui';
 
 const toneBg: Record<Tone, string> = {
   caramelo: 'bg-tone-caramelo',
@@ -17,7 +16,7 @@ const toneBg: Record<Tone, string> = {
   manteiga: 'bg-tone-manteiga',
 };
 
-// fotos reais recortadas (fundo transparente): ficam inteiras, assentadas no pé do arco, longe da curva do topo
+// fotos reais recortadas (fundo transparente): ficam inteiras, soltas sobre a cor do cartão
 const cutouts = new Set<PhotoKey>(['jeni-pote', 'jeni-empadao']);
 
 const Photo = ({ k, sizes, className = '' }: { k: PhotoKey; sizes: string; className?: string }) => {
@@ -31,7 +30,7 @@ const Photo = ({ k, sizes, className = '' }: { k: PhotoKey; sizes: string; class
       height={p.height}
       alt={p.alt}
       loading="lazy"
-      className={`size-full ${cutouts.has(k) ? 'object-contain object-bottom px-[10%] pt-[16%] pb-[4%]' : 'object-cover'} ${className}`}
+      className={`size-full ${cutouts.has(k) ? 'object-contain' : 'object-cover'} ${className}`}
     />
   );
 };
@@ -68,21 +67,21 @@ const ItemRow = ({ id, name, price }: { id: string; name: string; price: number 
   );
 };
 
-// Cartão de um grupo: foto em arco (com fotinhas extras flutuando) e a lista de sabores
+// Cartão de um grupo: foto grande (com fotinhas extras flutuando) e a lista de sabores
 const GroupCard = ({ group, headingLevel = 'h3' }: { group: MenuGroup; headingLevel?: 'h3' | 'p' }) => {
   const [main, ...extras] = group.photos;
   const Heading = headingLevel;
   return (
-    <div className={`grid h-full gap-5 rounded-[2.5rem] p-5 sm:p-7 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-10 lg:p-10 ${toneBg[group.tone]}`}>
-      <div className="relative mx-auto w-full max-w-[11rem] lg:max-w-[22rem]">
+    <div className={`grid h-full gap-5 rounded-[2.5rem] p-5 sm:p-7 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-10 lg:p-10 ${toneBg[group.tone]}`}>
+      <div className="relative mx-auto w-full max-w-[16rem] lg:max-w-[24rem]">
         <m.div
           initial={{ rotate: -6, scale: 0.92, opacity: 0 }}
           animate={{ rotate: 0, scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: easeOutExpo }}
         >
-          <Arch className="aspect-square bg-white/60 lg:aspect-[4/5]">
-            <Photo k={main} sizes="(min-width: 1024px) 22rem, 80vw" />
-          </Arch>
+          <div className={`aspect-[3/4] ${cutouts.has(main) ? '' : 'overflow-hidden rounded-[2rem]'}`}>
+            <Photo k={main} sizes="(min-width: 1024px) 24rem, 70vw" />
+          </div>
         </m.div>
         {extras.slice(0, 2).map((k, i) => (
           <span

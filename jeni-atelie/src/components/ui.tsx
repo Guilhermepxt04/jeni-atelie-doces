@@ -3,14 +3,6 @@ import { m } from 'framer-motion';
 import { useReducedMotion } from '../hooks/motion';
 import { pop } from '../theme';
 
-// Moldura em arco (topo redondo, pé levemente arredondado), como nas vitrines de confeitaria.
-// `wide` vira cápsula horizontal, para a foto larga da capa.
-export const Arch = ({ children, wide, className = '' }: { children: ReactNode; wide?: boolean; className?: string }) => (
-  <div className={`overflow-hidden ${wide ? 'rounded-[999px_999px_2.5rem_2.5rem] lg:rounded-[999px]' : 'rounded-[999px_999px_1.75rem_1.75rem]'} ${className}`}>
-    {children}
-  </div>
-);
-
 const stickerTones = {
   manteiga: 'bg-manteiga text-chocolate',
   morango: 'bg-morango-forte text-white',

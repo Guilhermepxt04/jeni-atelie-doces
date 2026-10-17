@@ -51,7 +51,7 @@ export const Cta = ({ href, children, tone = 'morango', external, className = ''
     <a
       href={href}
       {...(external ? { target: '_blank', rel: 'noopener' } : {})}
-      className={`group inline-flex min-h-14 items-center gap-4 rounded-full py-2 pr-2 pl-7 text-[0.9375rem] font-bold tracking-[0.01em] transition-[background-color,transform] duration-500 ease-[var(--ease-drawer)] active:scale-[0.97] ${tones} ${className}`}
+      className={`group inline-flex min-h-14 items-center gap-4 rounded-full py-2 pr-2 pl-7 text-[1.0625rem] font-bold tracking-[0.01em] transition-[background-color,transform] duration-500 ease-[var(--ease-drawer)] active:scale-[0.97] ${tones} ${className}`}
     >
       <span className="flex-1 whitespace-nowrap">{children}</span>
       <span aria-hidden="true" className={`grid size-10 place-items-center rounded-full ${dot} transition-transform duration-500 ease-[var(--ease-drawer)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105`}>
