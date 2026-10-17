@@ -1,145 +1,175 @@
-// Todo o texto da página fica aqui, para a Jeni revisar num lugar só.
-// Preços, prazos, bairro, contatos e a carta são EXEMPLO: confirme com a cliente antes de publicar.
+// Todo o texto e o cardápio da página ficam aqui, para a Jeni revisar num lugar só.
+// Preços e sabores são reais (passados pela cliente). WhatsApp, e-mail, Instagram,
+// horários e as respostas das dúvidas ainda são EXEMPLO: confirme antes de publicar.
+import type { PhotoKey } from './images';
 
 // WhatsApp do ateliê: código do país + DDD + número, só dígitos
 export const WHATSAPP_NUMBER = '5511999999999';
 export const WHATSAPP_DISPLAY = '(11) 99999-9999';
 export const EMAIL = 'contato@jeniatelie.com.br';
 export const INSTAGRAM = 'jeniatelie';
-export const BAIRRO = 'Vila Mariana, São Paulo';
 
-export const whatsappUrl = (text = 'Olá, Jeni! Vim pelo site e queria fazer um orçamento.') =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+// Bairros atendidos, com entrega grátis. O CEP de referência não vai para a página.
+export const areas = ['Vila Cosmopolita', 'Tatuapé'] as const;
+export const CITY = 'São Paulo';
 
-export const navLinks = [
-  { label: 'Cardápio', href: '#cardapio' },
-  { label: 'Monte sua caixa', href: '#caixa' },
-  { label: 'Como encomendar', href: '#como' },
-  { label: 'Dúvidas', href: '#duvidas' },
-  { label: 'Contato', href: '#contato' },
-];
-
-export const hero = {
-  title: ['Doces finos,', 'feitos à mão'],
-  lede: 'Brigadeiros, bem-casados, bolos e caixas de presente que a Jeni prepara na semana da sua festa, em poucas encomendas por vez.',
-  cta: 'Montar minha caixa',
-  secondary: 'Ver o cardápio',
+// iFood e 99Food estão fechados: aparecem como "em breve", sem link.
+// Quando reabrirem, preencha url e troque soon para false.
+export const channels = {
+  ifood: { label: 'iFood', soon: true, url: null as string | null },
+  food99: { label: '99Food', soon: true, url: null as string | null },
 };
 
-export const occasions = {
-  statement: 'Uma caixa para cada ocasião. Os sabores mudam com a festa, o número de convidados e o recado escrito no cartão.',
-  note: 'Estas são as encomendas que mais saem do ateliê.',
-  slips: [
-    { title: 'Aniversário', lines: ['100 docinhos para 40 convidados', '40 brigadeiros belgas', '30 ninho com Nutella', '30 beijinhos de coco queimado', 'Forminhas na cor do tema', 'Cartão com o nome'], h: 92, r: -1.5 },
-    { title: 'Casamento', lines: ['300 bem-casados', 'Fita de cetim na cor da festa', 'Tag com as iniciais', 'Docinhos finos para a mesa', 'Degustação 30 dias antes'], h: 80, r: 0 },
-    { title: 'Chá de bebê', lines: ['60 docinhos', 'Ninho e beijinho', 'Forminhas em tom claro', '12 cupcakes com o nome'], h: 66, r: 1.2 },
-    { title: 'Presente', lines: ['Caixa com 9', 'Sabores à sua escolha', 'Laço de cetim', 'Cartão escrito à mão', 'Entrega no endereço'], h: 86, r: 0 },
-    { title: 'Empresas', lines: ['A partir de 20 caixas com 4', 'Tag com a sua marca', 'Entrega agendada'], h: 70, r: -1 },
-    { title: 'Páscoa', lines: ['Ovo de colher, 350 g', 'Recheio de brigadeiro belga ou ninho com Nutella', 'Pedidos abertos em março'], h: 78, r: 0 },
-  ],
+export type GroupId = 'potes' | 'brownies' | 'fatias' | 'coxinhas' | 'unitarios' | 'salgado';
+export type Tone = 'caramelo' | 'cacau' | 'pessego' | 'rosa' | 'lilas' | 'manteiga';
+export type MenuItem = { id: string; name: string; price: number };
+export type MenuGroup = {
+  id: GroupId;
+  title: string;
+  /** como o item aparece na mensagem do pedido: "Bolo de pote Prestígio" */
+  prefix: string;
+  blurb: string;
+  tone: Tone;
+  photos: PhotoKey[];
+  items: MenuItem[];
 };
 
-export type MenuItem = { name: string; desc: string; price: string };
-export const menu: { title: string; items: MenuItem[] }[] = [
+export const menu: MenuGroup[] = [
   {
-    title: 'Docinhos finos, o cento',
+    id: 'potes',
+    title: 'Bolos de pote',
+    prefix: 'Bolo de pote',
+    blurb: 'Camadas de massa fofinha e creme até a borda do pote. Dá para comer de colher, gelado.',
+    tone: 'caramelo',
+    photos: ['jeni-pote', 'gerada-pote'],
     items: [
-      { name: 'Brigadeiro tradicional', desc: 'Chocolate 50% cacau e granulado', price: 'R$ 190' },
-      { name: 'Brigadeiro belga', desc: 'Chocolate belga 54%, enrolado no cacau', price: 'R$ 230' },
-      { name: 'Beijinho de coco queimado', desc: 'Coco fresco, tostado no dia', price: 'R$ 200' },
-      { name: 'Ninho com Nutella', desc: 'Leite em pó com centro de creme de avelã', price: 'R$ 240' },
-      { name: 'Pistache', desc: 'Pistache torrado por dentro e por fora', price: 'R$ 290' },
-      { name: 'Camafeu de nozes', desc: 'Nozes, fondant e meia noz por cima', price: 'R$ 280' },
-      { name: 'Bicho de pé', desc: 'Morango, passado no açúcar cristal', price: 'R$ 200' },
+      { id: 'pote-choco-maracuja', name: 'Chocolate com maracujá', price: 22 },
+      { id: 'pote-branca-maracuja', name: 'Massa branca com maracujá', price: 22 },
+      { id: 'pote-ninho-morango', name: 'Ninho com morango', price: 20 },
+      { id: 'pote-belga', name: 'Chocolate belga', price: 20 },
+      { id: 'pote-cenoura', name: 'Cenoura com chocolate', price: 22 },
+      { id: 'pote-prestigio', name: 'Prestígio', price: 20 },
+      { id: 'pote-pudim', name: 'Bolo de pudim', price: 20 },
     ],
   },
   {
-    title: 'Por unidade',
+    id: 'brownies',
+    title: 'Brownies',
+    prefix: 'Brownie',
+    blurb: 'Casquinha que estala por cima e o meio molhadinho, do jeito que brownie tem que ser.',
+    tone: 'cacau',
+    photos: ['gerada-brownies'],
     items: [
-      { name: 'Bem-casado', desc: 'Pão de ló, doce de leite e fita de cetim', price: 'R$ 6,50' },
-      { name: 'Cupcake decorado', desc: 'Chocolate ou baunilha, buttercream', price: 'R$ 12' },
-      { name: 'Pão de mel', desc: 'Recheio de doce de leite, banho de chocolate', price: 'R$ 9' },
+      { id: 'brownie-tradicional', name: 'Tradicional', price: 15 },
+      { id: 'brownie-ferrero', name: 'Ferrero Rocher', price: 22 },
+      { id: 'brownie-ninho', name: 'Ninho', price: 20 },
+      { id: 'brownie-cacau-50', name: '50% Cacau', price: 18 },
     ],
   },
   {
-    title: 'Bolos, o quilo',
+    id: 'fatias',
+    title: 'Fatias',
+    prefix: 'Fatia',
+    blurb: 'Uma fatia generosa para quem quer um pedaço de bolo sem esperar a festa.',
+    tone: 'pessego',
+    photos: ['jeni-fatia', 'gerada-pudim', 'gerada-torta', 'gerada-banoffee'],
     items: [
-      { name: 'Bolo de festa', desc: 'Massa branca ou de chocolate, dois recheios', price: 'R$ 140' },
-      { name: 'Brigadeiro com morango', desc: 'Massa de chocolate, morangos inteiros', price: 'R$ 150' },
-      { name: 'Semi naked de frutas vermelhas', desc: 'Creme de baunilha, cobertura fina', price: 'R$ 160' },
+      { id: 'fatia-choco-maracuja', name: 'Chocolate com maracujá', price: 15 },
+      { id: 'fatia-ninho-morango', name: 'Ninho com morango', price: 18 },
+      { id: 'fatia-torta-maracuja', name: 'Torta de maracujá', price: 14 },
+      { id: 'fatia-pudim', name: 'Pudim', price: 16 },
+      { id: 'fatia-banoffee', name: 'Banoffee', price: 18 },
     ],
   },
   {
-    title: 'Caixas de presente',
+    id: 'coxinhas',
+    title: 'Coxinhas de morango',
+    prefix: 'Coxinha de morango',
+    blurb: 'Um morango inteiro escondido no brigadeiro. A primeira mordida é sempre a melhor.',
+    tone: 'rosa',
+    photos: ['gerada-coxinhas'],
     items: [
-      { name: 'Caixa com 4', desc: 'Sabores à escolha, laço e cartão', price: 'R$ 22' },
-      { name: 'Caixa com 9', desc: 'Sabores à escolha, laço e cartão', price: 'R$ 45' },
-      { name: 'Caixa com 16', desc: 'Sabores à escolha, laço e cartão', price: 'R$ 78' },
+      { id: 'coxinha-belga', name: 'Chocolate belga', price: 20 },
+      { id: 'coxinha-ninho-nutella', name: 'Ninho com Nutella', price: 20 },
+      { id: 'coxinha-ferrero', name: 'Ferrero Rocher', price: 22 },
     ],
+  },
+  {
+    id: 'unitarios',
+    title: 'Surpresa de uva e morango',
+    prefix: '',
+    blurb: 'Fruta fresca com creme e chocolate, para quem gosta do doce com um azedinho.',
+    tone: 'lilas',
+    photos: ['gerada-uva'],
+    items: [
+      { id: 'surpresa-de-uva', name: 'Surpresa de uva', price: 15 },
+      { id: 'morango-cravejado', name: 'Morango cravejado', price: 18 },
+    ],
+  },
+  {
+    id: 'salgado',
+    title: 'Salgado',
+    prefix: '',
+    blurb: 'Para equilibrar a mesa: massa que desmancha e recheio cremoso de frango.',
+    tone: 'manteiga',
+    photos: ['jeni-empadao', 'gerada-empadao'],
+    items: [{ id: 'empadao-frango', name: 'Empadão de frango', price: 18 }],
   },
 ];
 
-export type Topping = 'granulado' | 'cacau' | 'coco' | 'ninho' | 'pistache' | 'noz' | 'acucar';
-export type Flavor = { id: string; name: string; note: string; ball: string; top: Topping };
-export const flavors: Flavor[] = [
-  { id: 'trad', name: 'Brigadeiro tradicional', note: 'granulado', ball: '#3d2318', top: 'granulado' },
-  { id: 'belga', name: 'Brigadeiro belga', note: 'no cacau', ball: '#2a160f', top: 'cacau' },
-  { id: 'beij', name: 'Beijinho de coco queimado', note: 'coco tostado', ball: '#efe2c8', top: 'coco' },
-  { id: 'ninho', name: 'Ninho com Nutella', note: 'leite em pó', ball: '#f4ead6', top: 'ninho' },
-  { id: 'pist', name: 'Pistache', note: 'pistache picado', ball: '#a9b36e', top: 'pistache' },
-  { id: 'cama', name: 'Camafeu de nozes', note: 'meia noz', ball: '#e9dcc0', top: 'noz' },
-  { id: 'bicho', name: 'Bicho de pé', note: 'açúcar cristal', ball: '#e2a29b', top: 'acucar' },
+const itemIndex = new Map(menu.flatMap((g) => g.items.map((i) => [i.id, { ...i, group: g.id }] as const)));
+
+export const findItem = (id: string): (MenuItem & { group: GroupId }) | undefined => itemIndex.get(id);
+export const findGroup = (id: GroupId): MenuGroup => menu.find((g) => g.id === id)!;
+
+/** "R$ 15" para valores inteiros, "R$ 6,50" quando há centavos; espaço normal depois do R$. */
+export const formatBRL = (value: number): string =>
+  new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+    maximumFractionDigits: 2,
+  })
+    .format(value)
+    .replace(/ /g, ' ');
+
+export const minPrice = Math.min(...menu.flatMap((g) => g.items.map((i) => i.price)));
+
+export const steps = [
+  'Escolha os doces aqui no cardápio e envie o pedido pelo WhatsApp.',
+  'A Jeni confirma o que tem pronto e combina o dia do que for por encomenda.',
+  'Você retira ou recebe em casa, sem taxa, na Vila Cosmopolita e no Tatuapé.',
 ];
-
-export const boxSizes = [
-  { size: 4, cols: 2, price: 22 },
-  { size: 9, cols: 3, price: 45 },
-  { size: 16, cols: 4, price: 78 },
-] as const;
-
-export const process = {
-  title: 'Do pedido à entrega',
-  text: 'Os doces são feitos na semana da festa. É por isso que o ateliê pede sete dias de antecedência e aceita poucas encomendas por fim de semana.',
-  groups: [
-    { when: 'Hoje', rows: [['Você escolhe sabores e quantidades', '10 min'], ['A Jeni confirma a data e o valor', 'no mesmo dia'], ['Sinal de 50% no Pix reserva a data', 'até 24 h']] },
-    { when: 'Na semana da festa', rows: [['Compra dos ingredientes frescos', '3 dias antes'], ['Massa no fogo e enrolados à mão', '2 dias antes'], ['Forminhas, caixas, laço e cartão', '1 dia antes']] },
-    { when: 'No dia', rows: [['Retirada no ateliê ou entrega', 'hora marcada']] },
-  ],
-  total: ['Seus doces, frescos', '7 dias'],
-};
-
-export const letter = [
-  'Comecei fazendo brigadeiro para os aniversários da família. Depois vieram os amigos, os amigos dos amigos, e a cozinha de casa ficou pequena.',
-  'O ateliê nasceu assim: uma bancada, uma panela de cobre e uma regra que nunca mudou. {Cada doce é enrolado à mão, um por um,} na semana da sua festa.',
-  'Por isso trabalho só com encomenda, e com poucas por vez. Prefiro recusar uma data a entregar um doce feito às pressas.',
-  'Quando você escreve, sou eu quem responde. A gente conversa sobre a festa, as cores e quem vai estar lá, e eu monto os sabores a partir disso.',
-  'Obrigada por pensar no ateliê para um dia importante.',
-];
-
-export const faq = {
-  title: 'Antes de encomendar',
-  facts: ['Encomendas de terça a sábado', 'Sete dias de antecedência, trinta para casamentos', 'Retirada no ateliê ou entrega com taxa por bairro'],
-  items: [
-    { q: 'Qual é o pedido mínimo?', a: '25 unidades por sabor nos docinhos finos. Caixas de presente, bolos e bem-casados não têm mínimo.' },
-    { q: 'Quanto tempo os doces duram?', a: 'Brigadeiros e beijinhos ficam bons por três dias em lugar fresco, fora da geladeira. Bolos com fruta vão para a geladeira e devem ser servidos em até dois dias.' },
-    { q: 'Fazem doces sem lactose ou sem glúten?', a: 'Alguns sabores, sob consulta. A cozinha também usa farinha de trigo, então os doces não são indicados para quem tem doença celíaca.' },
-    { q: 'Como funciona o pagamento?', a: 'Sinal de 50% no Pix para reservar a data. O restante é pago até a véspera da entrega.' },
-    { q: 'Posso escolher as forminhas e a fita?', a: 'Pode. Mande a paleta da festa ou uma foto do convite e a Jeni separa forminhas e fitas no mesmo tom.' },
-    { q: 'Vocês entregam no salão de festas?', a: 'Entregam, com hora marcada. A taxa depende do bairro e vem junto com o orçamento.' },
-  ],
-};
 
 export const hours = [
   ['Terça a sexta', '9h–18h'],
   ['Sábado', '9h–13h'],
   ['Domingo e segunda', 'fechado'],
-];
+] as const;
 
-export const credits = [
-  { title: 'Brigadeiros', author: 'Rodrigogomesonetwo', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', page: 'https://commons.wikimedia.org/w/index.php?curid=89908490' },
-  { title: 'Chocolate truffles, prep1', author: 'gran', license: 'CC BY 3.0', licenseUrl: 'https://creativecommons.org/licenses/by/3.0/', page: 'https://commons.wikimedia.org/w/index.php?curid=14996151' },
-  { title: 'Piping buttercream onto cake', author: 'Michael Prudhomme', license: 'CC BY 2.5', licenseUrl: 'https://creativecommons.org/licenses/by/2.5/', page: 'https://commons.wikimedia.org/wiki/File:Piping_buttercream_onto_cake.JPG' },
-  { title: 'Piping Nozzle, Star', author: 'Museums Victoria', license: 'CC BY 4.0', licenseUrl: 'https://creativecommons.org/licenses/by/4.0/', page: 'https://collections.museumsvictoria.com.au/items/1347681' },
-  { title: 'Chocolate Cupcakes with Raspberry Buttercream', author: 'Whitney', license: 'CC BY 2.0', licenseUrl: 'https://creativecommons.org/licenses/by/2.0/', page: 'https://commons.wikimedia.org/w/index.php?curid=10390036' },
-  { title: 'Framboesas e mel', author: 'Glen Carrie, Ben Moore e Sonja Langford', license: 'Licença Unsplash', licenseUrl: 'https://unsplash.com/license', page: 'https://unsplash.com/license' },
+export const faq = [
+  {
+    q: 'Os doces são pronta-entrega?',
+    a: 'Os doces do cardápio ficam prontos enquanto durar o estoque. Se um sabor acabar, a Jeni faz sob encomenda e combina a data com você.',
+  },
+  {
+    q: 'Com quanto tempo de antecedência encomendo um bolo inteiro?',
+    a: 'Depende do bolo e do tamanho. Mande a data da festa pelo WhatsApp e a Jeni responde com o prazo e o valor.',
+  },
+  {
+    q: 'Vocês entregam?',
+    a: 'Entregamos sem taxa na Vila Cosmopolita e no Tatuapé. Se preferir, é só retirar com a Jeni no horário combinado.',
+  },
+  {
+    q: 'Tem pedido mínimo?',
+    a: 'Não. Pode pedir um bolo de pote só para você.',
+  },
+  {
+    q: 'Quanto tempo os doces duram?',
+    a: 'Bolos de pote, fatias e pudim ficam bons por até três dias na geladeira. Brownie dura um pouco mais, bem fechado, fora dela.',
+  },
+  {
+    q: 'Como pago?',
+    a: 'Pix, cartão ou dinheiro na entrega ou na retirada. A Jeni confirma tudo junto com o pedido.',
+  },
 ];

@@ -34,3 +34,10 @@ export const img = {
 
 export const selo = seloUrl;
 export const seloClaro = seloClaroUrl;
+
+// Chaves das fotos do redesign; os arquivos entram na Tarefa 3 do plano
+export type PhotoKey =
+  | 'capa'
+  | 'jeni-pote' | 'jeni-fatia' | 'jeni-empadao' | 'jeni-potes-mesa'
+  | 'gerada-pote' | 'gerada-brownies' | 'gerada-fatia' | 'gerada-pudim' | 'gerada-torta'
+  | 'gerada-banoffee' | 'gerada-coxinhas' | 'gerada-uva' | 'gerada-empadao';
