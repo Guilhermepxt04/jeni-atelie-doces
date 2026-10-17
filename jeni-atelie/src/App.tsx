@@ -2,6 +2,7 @@ import { LazyMotion, MotionConfig, domAnimation } from 'framer-motion';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { Ambient } from './components/Ambient';
+import { FlavorRibbon } from './components/FlavorRibbon';
 import { ScrollProgress } from './components/motion';
 import { useLenis } from './hooks/motion';
 
@@ -19,6 +20,7 @@ export default function App() {
         <Nav />
         <main>
           <Hero />
+          <FlavorRibbon />
         </main>
       </MotionConfig>
     </LazyMotion>
