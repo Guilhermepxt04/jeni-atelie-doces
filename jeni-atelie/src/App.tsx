@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { Ambient } from './components/Ambient';
 import { FlavorRibbon } from './components/FlavorRibbon';
 import { Showcase } from './components/Showcase';
+import { CakeOrder } from './components/CakeOrder';
 import { CartProvider } from './cart-context';
 import { CartBar } from './components/CartBar';
 import { FloatingWhatsapp } from './components/FloatingWhatsapp';
@@ -27,6 +28,7 @@ export default function App() {
           <Hero />
           <FlavorRibbon />
           <Showcase />
+          <CakeOrder />
         </main>
         <CartBar />
         <FloatingWhatsapp />
