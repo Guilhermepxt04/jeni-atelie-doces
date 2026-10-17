@@ -43,9 +43,9 @@ export const Hero = () => {
   }, [reduce, paused]);
 
   return (
-    <section ref={ref} aria-label="Jeni Ateliê" className="grid min-h-[100dvh] gap-3 bg-blush p-3 lg:grid-cols-2">
+    <section ref={ref} aria-label="Jeni Ateliê" className="m-2 grid min-h-[calc(100dvh-1rem)] gap-3 rounded-[2.5rem] bg-blush p-2.5 sm:m-3 sm:min-h-[calc(100dvh-1.5rem)] sm:p-3 lg:grid-cols-2">
       {/* cartão do ateliê */}
-      <div className="relative order-2 -mt-6 flex flex-col bg-papel lg:order-1 lg:mt-0 lg:min-h-[calc(100dvh-1.5rem)]">
+      <div className="relative order-2 -mt-8 flex flex-col overflow-clip rounded-[2rem] bg-papel lg:order-1 lg:mt-0 lg:min-h-[calc(100dvh-3rem)]">
         <div aria-hidden="true" className="flex h-10 shrink-0 overflow-hidden lg:h-14">
           {Array.from({ length: BARS }, (_, i) => (
             <m.span
@@ -68,7 +68,7 @@ export const Hero = () => {
             initial={reduce ? false : { opacity: 0, scale: 0.86 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: easeOutExpo }}
-            className="mb-6 w-[44%] max-w-[300px] lg:mb-9 lg:w-[clamp(200px,21vw,300px)]"
+            className="mb-6 w-[44%] max-w-[300px] animate-[breathe_7s_ease-in-out_infinite_alternate] motion-reduce:animate-none lg:mb-9 lg:w-[clamp(200px,21vw,300px)]"
           />
           <h1 className="font-display text-display text-tinta">
             {hero.title.map((t) => (
@@ -94,7 +94,7 @@ export const Hero = () => {
       </div>
 
       {/* foto que troca devagar */}
-      <figure className="relative order-1 h-[34dvh] overflow-hidden bg-cacau lg:sticky lg:top-3 lg:order-2 lg:h-[calc(100dvh-1.5rem)]">
+      <figure className="relative order-1 h-[34dvh] overflow-hidden rounded-[2rem] bg-cacau lg:order-2 lg:h-auto lg:min-h-[calc(100dvh-3rem)]">
         <m.div style={{ y: photoY, scale: photoScale }} className="absolute inset-0">
           <AnimatePresence initial={false}>
             <m.img

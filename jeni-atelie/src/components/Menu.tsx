@@ -10,13 +10,13 @@ export const Menu = () => {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
-  const clip = useTransform(scrollYProgress, [0, 1], [reduce ? 'inset(0% 0 0 0)' : 'inset(38% 0 0 0)', 'inset(0% 0 0 0)']);
+  const clip = useTransform(scrollYProgress, [0, 1], [reduce ? 'inset(0% 0 0 0 round 2rem)' : 'inset(38% 0 0 0 round 2rem)', 'inset(0% 0 0 0 round 2rem)']);
   const scale = useTransform(scrollYProgress, [0, 1], [reduce ? 1 : 1.18, 1]);
 
   return (
-    <section id="cardapio" aria-labelledby="cardapio-t" className="grid gap-y-12 bg-cacau px-2.5 py-24 sm:px-6 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-44">
+    <section id="cardapio" aria-labelledby="cardapio-t" className="grid gap-y-12 px-2.5 py-24 sm:px-6 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-44">
       <div ref={ref} className="lg:sticky lg:top-24 lg:col-span-5 lg:self-start">
-        <m.figure style={{ clipPath: clip }} className="overflow-hidden">
+        <m.figure style={{ clipPath: clip }} className="overflow-hidden rounded-[2rem]">
           <m.img
             style={{ scale }}
             srcSet={img.cupcake.srcSet}
@@ -32,8 +32,7 @@ export const Menu = () => {
       </div>
 
       <div className="w-full lg:col-span-6 lg:col-start-7 lg:max-w-[40rem] lg:justify-self-end">
-        <div aria-hidden="true" className="edge-scallop" />
-        <m.div {...inView} variants={stagger(0.05)} className="bg-papel px-6 pt-14 pb-14 text-center sm:px-14">
+        <m.div {...inView} variants={stagger(0.05)} className="rounded-[2rem] bg-papel px-6 pt-14 pb-14 text-center sm:px-14">
           <m.h2 id="cardapio-t" variants={rise} className="font-display text-statement">Cardápio do ateliê</m.h2>
           <m.p variants={rise} className="mt-3 text-note text-tinta-suave">Docinhos vendidos por cento. Mínimo de 25 por sabor.</m.p>
 
@@ -62,7 +61,6 @@ export const Menu = () => {
             Pedidos de terça a sábado,<br />com 7 dias de antecedência.
           </m.p>
         </m.div>
-        <div aria-hidden="true" className="edge-scallop edge-scallop-down" />
       </div>
     </section>
   );

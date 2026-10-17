@@ -118,7 +118,7 @@ export const BoxBuilder = () => {
   const scale = 360 / cols / CELL;
 
   return (
-    <section id="caixa" aria-labelledby="caixa-t" className="grid gap-10 bg-papel px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-10 lg:px-8 lg:py-44">
+    <section id="caixa" aria-labelledby="caixa-t" className="mx-2 rounded-[2.5rem] overflow-clip sm:mx-3 grid gap-10 bg-papel px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-10 lg:px-8 lg:py-44">
       <m.div {...inView} variants={stagger(0.08)} className="lg:col-span-6 lg:row-start-1">
         <m.h2 id="caixa-t" variants={rise} className="font-display text-display">Monte sua caixa</m.h2>
         <m.p variants={rise} className="mt-6 max-w-[46ch]">
@@ -127,13 +127,21 @@ export const BoxBuilder = () => {
 
         <m.fieldset variants={rise} className="mt-12">
           <legend className="mb-4 font-semibold">Tamanho</legend>
-          <div className="inline-flex w-full gap-1 rounded-full bg-papel-2 p-1.5 sm:w-auto">
+          {/* pílula clara desliza até o tamanho escolhido (o texto fica sempre em tinta, contraste garantido) */}
+          <div className="relative grid w-full grid-cols-3 rounded-full bg-papel-2 p-1.5 sm:inline-grid sm:w-auto">
+            <m.span
+              aria-hidden="true"
+              initial={false}
+              animate={{ x: `${boxSizes.findIndex((b) => b.size === size) * 100}%` }}
+              transition={reduce ? { duration: 0 } : settle}
+              className={`absolute inset-y-1.5 left-1.5 w-[calc((100%-0.75rem)/3)] rounded-full bg-white`}
+            />
             {boxSizes.map((b) => (
-              <label key={b.size} className="relative flex-1 cursor-pointer sm:flex-none">
+              <label key={b.size} className="relative cursor-pointer">
                 <input type="radio" name="tamanho" value={b.size} checked={size === b.size} onChange={() => resize(b.size)} className="peer sr-only" />
-                <span className="relative flex flex-col items-center rounded-full px-6 py-2.5 text-note transition-[background-color,color,transform] duration-500 ease-[var(--ease-drawer)] hover:bg-blush active:scale-[0.97] peer-checked:bg-tinta peer-checked:text-papel peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-cobre">
+                <span className="relative flex flex-col items-center rounded-full px-6 py-2.5 text-note text-tinta-suave transition-[color,transform] active:scale-[0.96] peer-checked:text-tinta peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-cobre">
                   <span className="font-semibold">Com {b.size}</span>
-                  <span className="tabular-nums opacity-75">R$ {b.price}</span>
+                  <span className="tabular-nums">R$ {b.price}</span>
                 </span>
               </label>
             ))}

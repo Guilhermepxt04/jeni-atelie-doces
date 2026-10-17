@@ -28,7 +28,7 @@ const Paragraph = ({ text }: { text: string }) => {
 };
 
 export const Letter = () => (
-  <section id="sobre" aria-labelledby="sobre-t" className="flex flex-col items-center bg-cacau py-24 sm:px-6 lg:py-44">
+  <section id="sobre" aria-labelledby="sobre-t" className="flex flex-col items-center px-3 py-24 sm:px-6 lg:py-44">
     <h2 id="sobre-t" className="sr-only">Uma carta da Jeni</h2>
     <m.article
       initial={{ opacity: 0, y: 60, rotate: -2 }}
@@ -37,7 +37,7 @@ export const Letter = () => (
       transition={{ duration: 1.3, ease: easeOutExpo }}
       className="relative w-full max-w-[40rem]"
     >
-      <m.div {...inView} variants={stagger(0.1, 0.3)} className="relative z-0 space-y-[1.4em] bg-papel px-6 pt-12 pb-16 sm:px-15">
+      <m.div {...inView} variants={stagger(0.06, 0.15)} className="relative space-y-[1.4em] rounded-[2rem] bg-papel px-6 pt-12 pb-16 sm:px-15">
         <m.img variants={rise} src={selo} alt="" width={640} height={640} loading="lazy" className="size-16" />
         {letter.map((p) => <Paragraph key={p} text={p} />)}
         <m.div variants={rise} className="pt-4">
@@ -45,10 +45,9 @@ export const Letter = () => (
           <p className="text-note text-tinta-suave">Confeiteira e dona do ateliê</p>
         </m.div>
       </m.div>
-      <div aria-hidden="true" className="edge-scallop edge-scallop-down" />
     </m.article>
 
-    <m.div {...inView} variants={rise} className="mt-7 w-full max-w-[40rem] bg-papel px-6 pb-6 sm:px-15">
+    <m.div {...inView} variants={rise} className="mt-3 w-full max-w-[40rem] overflow-clip rounded-[1.75rem] bg-papel px-6 pb-6 sm:px-15">
       <div aria-hidden="true" className="perforation -mx-6 mb-5 sm:-mx-15" />
       <p>
         Para orçamentos por e-mail:{' '}

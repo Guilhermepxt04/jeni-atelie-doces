@@ -10,7 +10,7 @@ import { inView, rise, stagger, useReducedMotion } from '../hooks/motion';
 const Item = ({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) => {
   const id = useId();
   return (
-    <m.div variants={rise}>
+    <m.div variants={rise} className="rounded-[1.5rem] bg-papel px-5 py-2 transition-colors duration-500 hover:bg-white/60 sm:px-6">
       <h3>
         <button
           type="button"
@@ -20,7 +20,7 @@ const Item = ({ q, a, open, onToggle }: { q: string; a: string; open: boolean; o
           className="group flex min-h-12 w-full items-center justify-between gap-4 text-left text-lead font-medium transition-colors duration-300 hover:text-cobre"
         >
           {q}
-          <span className={`grid size-9 shrink-0 place-items-center rounded-full bg-papel transition-[transform,background-color] duration-500 ease-[var(--ease-drawer)] group-hover:bg-blush ${open ? 'rotate-45' : ''}`}>
+          <span className={`grid size-9 shrink-0 place-items-center rounded-full bg-papel-2 transition-[transform,background-color] duration-500 ease-[var(--ease-drawer)] group-hover:bg-blush ${open ? 'rotate-45' : ''}`}>
             <Plus size={16} weight="light" />
           </span>
         </button>
@@ -52,13 +52,13 @@ export const Faq = () => {
   const squareY = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 60, reduce ? 0 : -60]);
 
   return (
-    <section id="duvidas" aria-labelledby="duvidas-t" className="flex flex-col gap-16 bg-papel-2 px-4 pb-24 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:pb-44">
+    <section id="duvidas" aria-labelledby="duvidas-t" className="mx-2 rounded-[2.5rem] overflow-clip sm:mx-3 flex flex-col gap-16 bg-papel-2 px-4 pb-24 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:pb-44">
       <m.div {...inView} variants={stagger(0.06)} className="order-2 lg:order-1 lg:col-span-5 lg:pt-44">
         <m.h2 id="duvidas-t" variants={rise} className="font-display text-display">{faq.title}</m.h2>
         <m.ul variants={rise} className="mt-7 grid gap-1.5">
           {faq.facts.map((f) => <li key={f}>{f}</li>)}
         </m.ul>
-        <div className="mt-12 grid gap-5">
+        <div className="mt-12 grid gap-2.5">
           {faq.items.map((it, i) => (
             <Item key={it.q} q={it.q} a={it.a} open={open === i} onToggle={() => setOpen(open === i ? null : i)} />
           ))}
@@ -70,7 +70,7 @@ export const Faq = () => {
       </m.div>
 
       <div ref={ref} className="relative order-1 -mx-4 sm:-mx-6 lg:order-2 lg:col-span-6 lg:col-start-7 lg:mx-0 lg:pb-20">
-        <div className="overflow-hidden">
+        <div className="overflow-hidden rounded-[2rem]">
           <m.img
             style={{ y: tallY, scale: 1.14 }}
             srcSet={img.confeitando.srcSet}
@@ -92,7 +92,7 @@ export const Faq = () => {
           height={img.bico.height}
           alt="Bico de confeitar pitanga antigo, peça de museu dos anos 1930"
           loading="lazy"
-          className="absolute right-4 -bottom-8 aspect-square w-[38%] border-8 border-papel-2 object-cover lg:right-auto lg:bottom-10 lg:-left-10 lg:w-[34%]"
+          className="absolute right-4 -bottom-8 aspect-square w-[38%] rounded-[1.75rem] border-8 border-papel-2 object-cover lg:right-auto lg:bottom-10 lg:-left-10 lg:w-[34%]"
         />
       </div>
     </section>

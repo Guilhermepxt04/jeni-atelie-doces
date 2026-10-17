@@ -91,6 +91,17 @@
   }
 }
 
+/* faixa de sabores: a lista vem duplicada, então -50% fecha o laço */
+@keyframes ribbon {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+/* o selo da capa respira: sobe, desce e inclina de leve, sem parar */
+@keyframes breathe {
+  from { translate: 0 -6px; rotate: -1.5deg; }
+  to { translate: 0 6px; rotate: 1.5deg; }
+}
+
 /* Lenis: a rolagem suave não briga com a nativa */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }

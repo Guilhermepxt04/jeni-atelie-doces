@@ -34,7 +34,7 @@ export const stagger = (gap = 0.08, delay = 0): Variants => ({
 });
 // sobe com peso, ganha opacidade e entra em foco (o desfoque é curto e só na entrada)
 export const rise: Variants = {
-  hidden: { opacity: 0, y: 32, filter: 'blur(6px)' },
-  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1, ease: easeOutExpo } },
+  hidden: { opacity: 0, y: 28, filter: 'blur(4px)' },
+  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: easeOutExpo } },
 };
 export const inView = { initial: 'hidden', whileInView: 'show', viewport: { once: true, margin: '0px 0px -12% 0px' } } as const;

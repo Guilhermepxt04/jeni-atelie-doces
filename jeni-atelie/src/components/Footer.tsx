@@ -20,10 +20,10 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-cacau px-4 pt-24 pb-10 text-papel sm:px-6 lg:pt-44">
+    <footer className="px-4 pt-24 pb-10 text-papel sm:px-6 lg:pt-44">
       <div className="mx-auto max-w-[74rem]">
         <div aria-hidden="true" className="edge-postcard" />
-        <m.div {...inView} variants={stagger(0.08)} className="relative grid gap-10 bg-papel px-6 pt-14 pb-8 text-tinta sm:px-12 lg:min-h-[26rem] lg:grid-cols-2 lg:px-18 lg:pt-18">
+        <m.div {...inView} variants={stagger(0.08)} className="relative grid gap-10 rounded-b-[2rem] bg-papel px-6 pt-14 pb-8 text-tinta sm:px-12 lg:min-h-[26rem] lg:grid-cols-2 lg:px-18 lg:pt-18">
           <m.div variants={rise} className="max-w-[40ch] pr-20 lg:pr-0">
             <p className="mb-5 font-display text-statement">Até a próxima festa</p>
             <p>Obrigada pela visita. Se a data ainda está longe, guarde este cartão. Se está perto, escreva logo: a agenda do mês fecha rápido.</p>
@@ -40,7 +40,7 @@ export const Footer = () => {
               height={img.brigadeiros.height}
               alt="Brigadeiros, beijinhos e bichos de pé em forminhas"
               loading="lazy"
-              className="absolute top-6 right-6 aspect-[3/4] w-16 border-[6px] border-papel bg-papel object-cover outline-1 outline-tinta/10 sm:w-22 lg:top-0 lg:right-0"
+              className="absolute top-6 right-6 aspect-[3/4] w-16 rounded-lg border-[6px] border-papel bg-papel object-cover outline-1 outline-tinta/10 sm:w-22 lg:top-0 lg:right-0"
             />
             <ul className="grid gap-0.5">
               {links.map((l) => (

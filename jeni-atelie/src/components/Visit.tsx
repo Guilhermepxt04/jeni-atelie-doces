@@ -14,7 +14,7 @@ export const Visit = () => {
   const y = useTransform(scrollYProgress, [0, 1], ['-10%', reduce ? '-10%' : '10%']);
 
   return (
-    <section ref={ref} id="contato" aria-labelledby="contato-t" className="relative bg-cacau pb-10 lg:min-h-[100dvh] lg:pb-0">
+    <section ref={ref} id="contato" aria-labelledby="contato-t" className="mx-2 rounded-[2.5rem] overflow-clip sm:mx-3 relative mt-3 bg-cacau-2 pb-3 lg:min-h-[calc(100dvh-1.5rem)] lg:pb-0">
       <div className="relative h-[70dvh] overflow-hidden lg:absolute lg:inset-0 lg:h-auto">
         <m.img
           style={{ y }}

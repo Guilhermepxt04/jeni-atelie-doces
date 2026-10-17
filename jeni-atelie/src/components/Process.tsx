@@ -12,7 +12,7 @@ export const Process = () => {
   const y = useTransform(scrollYProgress, [0, 1], [reduce ? '0%' : '-40%', '0%']);
 
   return (
-    <section id="como" aria-labelledby="como-t" className="grid gap-12 bg-blush px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-44">
+    <section id="como" aria-labelledby="como-t" className="mx-2 rounded-[2.5rem] overflow-clip sm:mx-3 mt-3 grid gap-12 bg-blush px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-44">
       <m.div {...inView} variants={stagger(0.1)} className="lg:col-span-5">
         <m.h2 id="como-t" variants={rise} className="font-display text-display">{process.title}</m.h2>
         <m.p variants={rise} className="mt-6 max-w-[34ch]">{process.text}</m.p>
@@ -23,7 +23,7 @@ export const Process = () => {
         <div aria-hidden="true" className="relative z-10 h-3 rounded-full bg-cacau" />
         <div className="-mt-1.5 overflow-hidden px-2 pb-6">
           <m.div style={{ y }}>
-            <div className="bg-papel px-5 pt-9 tabular-nums sm:px-8">
+            <div className="rounded-t-[1.75rem] bg-papel px-5 pt-9 tabular-nums sm:px-8">
               <p className="text-center text-lead font-medium">Comanda de encomenda</p>
               {process.groups.map((g) => (
                 <m.div key={g.when} {...inView} variants={stagger(0.07)}>
