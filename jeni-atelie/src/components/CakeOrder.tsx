@@ -4,29 +4,14 @@ import { buildCakeMessage, cakeSizes, whatsappUrl, type CakeSize } from '../cart
 import { inView, rise, stagger, useReducedMotion } from '../hooks/motion';
 import { settle } from '../theme';
 import { Cta } from './motion';
-import { Sticker } from './ui';
-
-// Bolo de andares desenhado na paleta: fica no lugar da foto até ela ser gerada
-// TODO foto: docs/prompts-gemini.md item 8 (bolo inteiro); trocar este desenho por <Arch> + <img>
-const CakeDrawing = () => (
-  <svg viewBox="0 0 240 240" aria-hidden="true" className="w-full">
-    <circle cx="120" cy="120" r="118" fill="var(--color-white, #fff)" opacity=".7" />
-    <rect x="58" y="128" width="124" height="62" rx="16" fill="var(--color-caramelo)" />
-    <rect x="58" y="128" width="124" height="18" rx="9" fill="var(--color-creme)" />
-    <rect x="78" y="80" width="84" height="52" rx="14" fill="var(--color-rosa)" />
-    <rect x="78" y="80" width="84" height="16" rx="8" fill="var(--color-creme)" />
-    {[70, 92, 114, 136, 158].map((x) => <circle key={x} cx={x} cy="130" r="6" fill="var(--color-creme)" />)}
-    {[90, 110, 130, 150].map((x) => <circle key={x} cx={x} cy="82" r="5" fill="var(--color-creme)" />)}
-    <path d="M120 52c-9 0-16 7-16 15 0 10 16 15 16 15s16-5 16-15c0-8-7-15-16-15Z" fill="var(--color-morango)" />
-    <path d="M114 50c3-5 9-5 12 0" stroke="#3d7a2c" strokeWidth="4" strokeLinecap="round" fill="none" />
-    <rect x="40" y="190" width="160" height="10" rx="5" fill="var(--color-chocolate)" opacity=".15" />
-  </svg>
-);
+import { photos } from '../images';
+import { Arch, Sticker } from './ui';
 
 export const CakeOrder = () => {
   const reduce = useReducedMotion();
   const [size, setSize] = useState<CakeSize>('ate-10');
   const index = cakeSizes.findIndex((s) => s.id === size);
+  const bolo = photos['gerada-bolo-inteiro'];
 
   return (
     <section id="encomendas" aria-labelledby="encomendas-t" className="mx-2 rounded-[2.5rem] bg-rosa px-4 py-16 sm:mx-3 sm:px-8 lg:px-14 lg:py-24">
@@ -38,7 +23,9 @@ export const CakeOrder = () => {
             viewport={{ once: true }}
             transition={settle}
           >
-            <CakeDrawing />
+            <Arch className="aspect-[3/4] bg-white/60">
+              <img srcSet={bolo.srcSet} sizes="(min-width: 1024px) 22rem, 80vw" src={bolo.src} width={bolo.width} height={bolo.height} alt={bolo.alt} loading="lazy" className="size-full object-cover" />
+            </Arch>
           </m.div>
           <Sticker tone="manteiga" rotate={-10} className="absolute -top-2 -left-2">sob encomenda</Sticker>
         </div>

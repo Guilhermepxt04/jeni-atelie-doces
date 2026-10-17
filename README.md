@@ -31,12 +31,11 @@ Todo o texto e o cardápio (sabores e preços) ficam em `src/content.ts`. As cor
 
 - Fotos reais da Jeni: originais em `fotos-jeni/`. O script `jeni-atelie/scripts/tratar-fotos.py` remove o fundo e ajusta a luz e a cor (`pip install "rembg[cpu]" pillow`).
 - Fotos geradas no Gemini a partir de referências: `Fotos Gemini/` e `jeni-atelie/src/assets/img/gerada/`. Os prompts estão em `docs/prompts-gemini.md`.
-- Ainda falta a foto do bolo inteiro (prompt 8). Até ela chegar, a seção de encomendas mostra um desenho.
+- A foto do bolo inteiro da seção de encomendas foi gerada no Gemini a partir da foto real (`fotos-jeni/bolo-inteiro-real.jpeg`).
 - O morango cravejado aparece no cardápio sem foto própria.
 
 ## Antes de publicar
 
-- Em `src/content.ts`, confira o número do WhatsApp, o e-mail, o Instagram, os horários e as respostas das dúvidas, que ainda são exemplo.
+- Em `src/content.ts`, troque o número do WhatsApp, o e-mail, o Instagram e os horários, que ainda são exemplo, e confira as respostas das dúvidas. Os horários também aparecem em `src/seo.ts`.
 - Ainda em `src/content.ts`, quando o iFood ou o 99Food reabrirem, preencha `channels.<canal>.url` e troque `soon` para `false`.
-- O recado da Jeni em `src/components/About.tsx` é um rascunho para ela confirmar.
-- O domínio de exemplo `jeniatelie.com.br` aparece em `index.html`, `src/seo.ts`, `public/robots.txt` e `public/sitemap.xml`.
+- O site ainda não tem domínio. Quando tiver, preencha `SITE_URL` em `src/seo.ts`, coloque o `<link rel="canonical">` e o `og:url` em `index.html`, crie `public/sitemap.xml` e aponte para ele no `public/robots.txt`.

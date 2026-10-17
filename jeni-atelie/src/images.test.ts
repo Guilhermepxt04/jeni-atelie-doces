@@ -19,6 +19,10 @@ describe('fotos', () => {
     }
   });
 
+  it('whole cake photo is available for the cake section', () => {
+    expect(photos['gerada-bolo-inteiro']?.alt).toMatch(/bolo/i);
+  });
+
   it('seal is available', () => {
     expect(selo).toBeTruthy();
   });

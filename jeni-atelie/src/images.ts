@@ -14,6 +14,8 @@ import geradaBanoffee from './assets/img/gerada/banoffee.jpg?w=480;765&format=we
 import geradaCoxinhas from './assets/img/gerada/coxinhas.jpg?w=480;765&format=webp&as=metadata';
 import geradaUva from './assets/img/gerada/surpresa-de-uva.jpg?w=480;765&format=webp&as=metadata';
 import geradaEmpadao from './assets/img/gerada/empadao.jpg?w=480;765&format=webp&as=metadata';
+// gerado no Gemini a partir da foto real do bolo da Jeni (fotos-jeni/bolo-inteiro-real.jpeg)
+import geradaBoloInteiro from './assets/img/gerada/bolo-inteiro.jpg?w=480;800;1200&format=webp&as=metadata';
 // selo sem o grão e a sombra do papel da foto original
 import seloUrl from './assets/img/selo-jeni-limpo.png?w=600&format=webp&quality=78';
 
@@ -23,7 +25,7 @@ export type PhotoKey =
   | 'capa'
   | 'jeni-pote' | 'jeni-fatia' | 'jeni-empadao' | 'jeni-potes-mesa'
   | 'gerada-pote' | 'gerada-brownies' | 'gerada-fatia' | 'gerada-pudim' | 'gerada-torta'
-  | 'gerada-banoffee' | 'gerada-coxinhas' | 'gerada-uva' | 'gerada-empadao';
+  | 'gerada-banoffee' | 'gerada-coxinhas' | 'gerada-uva' | 'gerada-empadao' | 'gerada-bolo-inteiro';
 
 // Converte as versões do imagetools em srcSet/src/width/height (a proporção evita salto ao carregar)
 // (com uma largura só, o imagetools devolve um objeto em vez de lista)
@@ -53,6 +55,7 @@ export const photos: Record<PhotoKey, Picture & { alt: string }> = {
   'gerada-coxinhas': pic(geradaCoxinhas, 'Coxinhas de morango de chocolate belga, ninho com Nutella e Ferrero Rocher, uma cortada mostrando o morango'),
   'gerada-uva': pic(geradaUva, 'Surpresa de uva no pote, com creme branco, uvas verdes e chocolate por cima'),
   'gerada-empadao': pic(geradaEmpadao, 'Empadão de frango com massa dourada em treliça e recheio cremoso'),
+  'gerada-bolo-inteiro': pic(geradaBoloInteiro, 'Bolo inteiro de massa branca com recheio de morango, coberto de creme e morangos banhados no chocolate branco, com uma fatia servida ao lado'),
 };
 
 export const selo = seloUrl;

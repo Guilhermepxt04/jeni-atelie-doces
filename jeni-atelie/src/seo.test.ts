@@ -26,6 +26,10 @@ describe('JSON-LD da confeitaria', () => {
     expect(ld.areaServed.map((a) => a.name)).toEqual(['Vila Cosmopolita', 'Tatuapé']);
   });
 
+  it('has no placeholder domain while the real one does not exist', () => {
+    expect(JSON.stringify(ld)).not.toContain('jeniatelie.com.br/');
+  });
+
   it('never publishes the CEP', () => {
     expect(JSON.stringify(ld)).not.toContain('08421');
   });

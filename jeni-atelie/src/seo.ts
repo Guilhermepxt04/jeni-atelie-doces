@@ -3,16 +3,16 @@
 import { CITY, EMAIL, INSTAGRAM, WHATSAPP_NUMBER, areas, menu } from './content';
 import { itemLabel } from './cart';
 
-// domínio de exemplo: troque junto com index.html, robots.txt e sitemap.xml
-export const SITE_URL = 'https://jeniatelie.com.br/';
+// O site ainda não tem domínio. Quando tiver, preencha (ex.: 'https://seudominio.com.br/')
+// e volte com canonical/og:url no index.html, o Sitemap no robots.txt e o public/sitemap.xml.
+export const SITE_URL: string | null = null;
 
 export const buildJsonLd = () => ({
   '@context': 'https://schema.org',
   '@type': 'Bakery',
   name: 'Jeni Ateliê',
   description: 'Confeitaria artesanal: bolos de pote, fatias, coxinhas de morango, brownies e bolos inteiros sob encomenda, com entrega grátis na Vila Cosmopolita e no Tatuapé.',
-  url: SITE_URL,
-  image: `${SITE_URL}og-image.jpg`,
+  ...(SITE_URL ? { url: SITE_URL, image: `${SITE_URL}og-image.jpg` } : {}),
   telephone: `+${WHATSAPP_NUMBER}`,
   email: EMAIL,
   sameAs: [`https://instagram.com/${INSTAGRAM}`],
