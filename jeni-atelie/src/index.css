@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+  Paleta do Jeni Ateliê, tirada do selo: cobre sobre papel marfim, com o cacau como chão.
+  Use pelos nomes (bg-cacau, text-tinta-suave, bg-papel-2...), nunca pelo hex.
+  Os mesmos valores existem em src/theme.ts para animações em JS: altere os dois juntos.
+*/
+@theme {
+  --color-cacau: #2e1c16;        /* chão escuro: rodapé, cardápio, caixa */
+  --color-cacau-2: #3b2620;      /* um degrau acima do cacau (fundo das cavidades) */
+  --color-papel: #f4f2ea;        /* o papel do selo: cartões, folhas, comandas */
+  --color-papel-2: #e6e3d8;      /* degrau do papel: campos, botões secundários */
+  --color-blush: #e6d3cb;        /* rosado do cobre, para campos de cor inteira */
+  --color-tinta: #33201a;        /* texto principal */
+  --color-tinta-suave: #6b5246;  /* notas e texto secundário */
+  --color-cobre: #8e5034;        /* ação: botões e um destaque por seção */
+  --color-cobre-claro: #c79a80;  /* forminhas e detalhes sobre o cacau */
+
+  --font-display: "Cormorant Garamond Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Montserrat Variable", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* cinco tamanhos de texto fazem a página inteira */
+  --text-display: clamp(2.75rem, 1.4rem + 4.6vw, 5.75rem);
+  --text-display--line-height: 0.96;
+  --text-display--letter-spacing: -0.025em;
+  --text-statement: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem);
+  --text-statement--line-height: 1.2;
+  --text-lead: clamp(1.1875rem, 1.05rem + 0.4vw, 1.375rem);
+  --text-lead--line-height: 1.35;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-note: 0.875rem;
+  --text-note--line-height: 1.45;
+}
+
+/* bordas recortadas da papelaria: babado, serrilha, cartão-postal e picote */
+.edge-scallop {
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3E%3Ccircle cx='14' cy='14' r='14' fill='%23f4f2ea'/%3E%3C/svg%3E") repeat-x left bottom / 28px 14px;
+}
+.edge-scallop-down { transform: scaleY(-1); }
+.edge-zigzag {
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16'%3E%3Cpath d='M0 0H24L12 16Z' fill='%23f4f2ea'/%3E%3C/svg%3E") repeat-x left top / 24px 16px;
+}
+.edge-postcard {
+  height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23f4f2ea'/%3E%3C/svg%3E") repeat-x center bottom / 80px 40px;
+}
+.perforation {
+  height: 5px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='5'%3E%3Ccircle cx='2.5' cy='2.5' r='2.5' fill='%232e1c16'/%3E%3C/svg%3E") repeat-x left center / 12px 5px;
+}
+.leader {
+  height: 4px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='4'%3E%3Ccircle cx='2' cy='2' r='2' fill='%23c79a80'/%3E%3C/svg%3E") repeat-x left center / 10px 4px;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+    -webkit-tap-highlight-color: transparent;
+    background: var(--color-cacau);
+  }
+  body {
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-cobre); color: var(--color-papel); }
+  a, button, input, label, summary { touch-action: manipulation; }
+  :focus-visible {
+    outline: 2px solid var(--color-cobre);
+    outline-offset: 3px;
+  }
+}
+
+/* Lenis: a rolagem suave não briga com a nativa */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}

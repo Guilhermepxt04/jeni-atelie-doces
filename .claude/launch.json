@@ -2,9 +2,9 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "site",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5188"],
+      "name": "jeni",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "jeni-atelie", "run", "dev", "--", "--port", "5188", "--strictPort"],
       "port": 5188
     }
   ]
