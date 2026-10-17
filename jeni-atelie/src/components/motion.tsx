@@ -5,11 +5,11 @@ import { useReducedMotion } from '../hooks/motion';
 
 const underline = 'after:h-px'; // taste-skill-ignore: sublinhado do link, não é divisor
 
-// Barra fina de progresso de leitura, em cobre
+// Barra fina de progresso de leitura, em morango
 export const ScrollProgress = () => {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });
-  return <m.div aria-hidden="true" style={{ scaleX, transformOrigin: '0%' }} className="fixed inset-x-0 top-0 z-[60] h-[3px] bg-cobre" />;
+  return <m.div aria-hidden="true" style={{ scaleX, transformOrigin: '0%' }} className="fixed inset-x-0 top-0 z-[60] h-[3px] bg-morango" />;
 };
 
 // Acompanha levemente o cursor; parado no toque e com menos movimento
@@ -36,21 +36,22 @@ export const Magnetic = ({ children, className = '' }: { children: ReactNode; cl
   );
 };
 
-type CtaProps = { href: string; children: ReactNode; tone?: 'cobre' | 'papel' | 'tinta'; external?: boolean; className?: string; icon?: ReactNode };
+export type CtaTone = 'morango' | 'chocolate' | 'branco';
+type CtaProps = { href: string; children: ReactNode; tone?: CtaTone; external?: boolean; className?: string; icon?: ReactNode };
 
 // Botão em pílula com a seta dentro do próprio círculo ("botão dentro do botão")
-export const Cta = ({ href, children, tone = 'cobre', external, className = '', icon }: CtaProps) => {
+export const Cta = ({ href, children, tone = 'morango', external, className = '', icon }: CtaProps) => {
   const tones = {
-    cobre: 'bg-cobre text-papel hover:bg-tinta',
-    tinta: 'bg-tinta text-papel hover:bg-cobre',
-    papel: 'bg-papel text-tinta hover:bg-white',
+    morango: 'bg-morango-forte text-white hover:bg-chocolate',
+    chocolate: 'bg-chocolate text-creme hover:bg-morango-forte hover:text-white',
+    branco: 'bg-white text-chocolate hover:bg-rosa',
   }[tone];
-  const dot = tone === 'papel' ? 'bg-tinta/8' : 'bg-papel/14';
+  const dot = tone === 'branco' ? 'bg-rosa' : 'bg-white/20';
   return (
     <a
       href={href}
       {...(external ? { target: '_blank', rel: 'noopener' } : {})}
-      className={`group inline-flex min-h-14 items-center gap-4 rounded-full py-2 pr-2 pl-7 text-[0.9375rem] font-semibold tracking-[0.01em] transition-[background-color,transform] duration-500 ease-[var(--ease-drawer)] active:scale-[0.97] ${tones} ${className}`}
+      className={`group inline-flex min-h-14 items-center gap-4 rounded-full py-2 pr-2 pl-7 text-[0.9375rem] font-bold tracking-[0.01em] transition-[background-color,transform] duration-500 ease-[var(--ease-drawer)] active:scale-[0.97] ${tones} ${className}`}
     >
       <span className="flex-1 whitespace-nowrap">{children}</span>
       <span aria-hidden="true" className={`grid size-10 place-items-center rounded-full ${dot} transition-transform duration-500 ease-[var(--ease-drawer)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105`}>

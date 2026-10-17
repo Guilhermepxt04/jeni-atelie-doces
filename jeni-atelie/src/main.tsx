@@ -1,8 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
-import '@fontsource-variable/cormorant-garamond'
-import '@fontsource-variable/cormorant-garamond/wght-italic.css'
-import '@fontsource-variable/montserrat'
+// Fraunces com todos os eixos (SOFT, WONK, opsz, wght) para os títulos; Figtree no texto
+import '@fontsource-variable/fraunces/full.css'
+import '@fontsource-variable/figtree'
 import './index.css'
 import App from './App.tsx'
 

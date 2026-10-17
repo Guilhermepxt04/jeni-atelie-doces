@@ -15,10 +15,10 @@ if (!template.includes(placeholder)) {
   throw new Error(`prerender: "${placeholder}" não encontrado em dist/index.html`)
 }
 
-// pré-carrega a fonte latina da Cormorant Garamond (títulos) (o nome do arquivo muda a cada build por causa do hash)
-const font = (await readdir(`${root}dist/assets`)).find((f) => /^cormorant-garamond-latin-wght-normal-.*.woff2$/.test(f))
+// pré-carrega a fonte latina da Fraunces (títulos); o nome do arquivo muda a cada build por causa do hash
+const font = (await readdir(`${root}dist/assets`)).find((f) => /^fraunces-latin-full-normal-.*\.woff2$/.test(f))
 const preload = font ? `<link rel="preload" href="/assets/${font}" as="font" type="font/woff2" crossorigin />\n  ` : ''
-if (!font) console.warn('prerender: fonte Cormorant Garamond não encontrada em dist/assets, sem preload')
+if (!font) console.warn('prerender: fonte Fraunces não encontrada em dist/assets, sem preload')
 
 await writeFile(indexPath, template
   .replace('</head>', `${preload}</head>`)
