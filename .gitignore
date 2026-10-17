@@ -5,3 +5,4 @@ dist-ssr
 .taste-skill/
 .claude/*
 !.claude/launch.json
+.superpowers/
