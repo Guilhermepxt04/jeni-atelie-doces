@@ -9,7 +9,7 @@ import { TextLink } from './motion';
 const Item = ({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) => {
   const id = useId();
   return (
-    <m.div variants={rise} className="rounded-[1.75rem] bg-white/80 px-5 py-2 transition-colors duration-500 hover:bg-white sm:px-6">
+    <m.div variants={rise} className="border-b border-chocolate/15 py-3">
       <h3>
         <button
           type="button"
@@ -57,7 +57,7 @@ export const Faq = () => {
           </TextLink>
         </m.div>
       </m.div>
-      <m.div {...inView} variants={stagger(0.06)} className="grid gap-2.5">
+      <m.div {...inView} variants={stagger(0.06)} className="grid border-t border-chocolate/15">
         {faq.map((it, i) => (
           <Item key={it.q} q={it.q} a={it.a} open={open === i} onToggle={() => setOpen(open === i ? null : i)} />
         ))}

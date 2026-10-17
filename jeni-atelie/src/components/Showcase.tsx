@@ -67,20 +67,20 @@ const ItemRow = ({ id, name, price }: { id: string; name: string; price: number 
   );
 };
 
-// Cartão de um grupo: foto grande (com fotinhas extras flutuando) e a lista de sabores
+// Um grupo: foto dominante (com fotinhas extras flutuando) e a lista de sabores, direto sobre a página
 const GroupCard = ({ group, headingLevel = 'h3' }: { group: MenuGroup; headingLevel?: 'h3' | 'p' }) => {
   const [main, ...extras] = group.photos;
   const Heading = headingLevel;
   return (
-    <div className={`grid h-full gap-5 rounded-[2.5rem] p-5 sm:p-7 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-10 lg:p-10 ${toneBg[group.tone]}`}>
-      <div className="relative mx-auto w-full max-w-[16rem] lg:max-w-[24rem]">
+    <div className="grid h-full gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
+      <div className="relative mx-auto w-full lg:max-w-[36rem]">
         <m.div
           initial={{ rotate: -6, scale: 0.92, opacity: 0 }}
           animate={{ rotate: 0, scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: easeOutExpo }}
         >
-          <div className={`aspect-[3/4] ${cutouts.has(main) ? '' : 'overflow-hidden rounded-[2rem]'}`}>
-            <Photo k={main} sizes="(min-width: 1024px) 24rem, 70vw" />
+          <div className={`aspect-[3/4] ${cutouts.has(main) ? '' : 'overflow-hidden rounded-[2.5rem]'}`}>
+            <Photo k={main} sizes="(min-width: 1024px) 36rem, 85vw" />
           </div>
         </m.div>
         {extras.slice(0, 2).map((k, i) => (

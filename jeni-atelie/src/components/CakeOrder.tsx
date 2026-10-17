@@ -14,17 +14,17 @@ export const CakeOrder = () => {
   const bolo = photos['gerada-bolo-inteiro'];
 
   return (
-    <section id="encomendas" aria-labelledby="encomendas-t" className="mx-2 rounded-[2.5rem] bg-rosa px-4 py-16 sm:mx-3 sm:px-8 lg:px-14 lg:py-24">
-      <div className="mx-auto grid max-w-[80rem] items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
-        <div className="relative mx-auto w-full max-w-[30rem]">
+    <section id="encomendas" aria-labelledby="encomendas-t" className="px-4 py-20 sm:px-6 lg:px-10 lg:py-28">
+      <div className="mx-auto grid max-w-[80rem] items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div className="relative mx-auto w-full max-w-[40rem]">
           <m.div
             initial={reduce ? false : { rotate: -8, scale: 0.9, opacity: 0 }}
             whileInView={{ rotate: 0, scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={settle}
           >
-            <div className="aspect-[3/4] overflow-hidden rounded-[2rem]">
-              <img srcSet={bolo.srcSet} sizes="(min-width: 1024px) 30rem, 90vw" src={bolo.src} width={bolo.width} height={bolo.height} alt={bolo.alt} loading="lazy" className="size-full object-cover" />
+            <div className="aspect-[3/4] overflow-hidden rounded-[2.5rem]">
+              <img srcSet={bolo.srcSet} sizes="(min-width: 1024px) 40rem, 92vw" src={bolo.src} width={bolo.width} height={bolo.height} alt={bolo.alt} loading="lazy" className="size-full object-cover" />
             </div>
           </m.div>
           <Sticker tone="manteiga" rotate={-10} className="absolute -top-2 -left-2">sob encomenda</Sticker>
@@ -39,7 +39,7 @@ export const CakeOrder = () => {
           <m.fieldset variants={rise} className="mt-8">
             <legend className="mb-3 font-bold">Para quantas pessoas?</legend>
             {/* pílula clara desliza até o tamanho escolhido */}
-            <div className="relative grid w-full grid-cols-3 rounded-full bg-white/60 p-1.5 sm:inline-grid sm:w-auto">
+            <div className="relative grid w-full grid-cols-3 rounded-full bg-rosa p-1.5 sm:inline-grid sm:w-auto">
               <m.span
                 aria-hidden="true"
                 initial={false}

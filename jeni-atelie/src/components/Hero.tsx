@@ -16,10 +16,10 @@ export const Hero = () => {
   const capa = photos.capa;
 
   return (
-    // telas largas: a foto inteira ocupa a seção e o texto fica no espaço vazio da esquerda
-    <section aria-labelledby="capa-t" className="relative mx-auto grid max-w-[90rem] gap-12 px-4 pt-28 pb-16 sm:px-6 lg:px-10 lg:pt-32 xl:block">
+    // a foto vai de ponta a ponta da tela; nas telas largas o texto fica sobre a mesa vazia da esquerda
+    <section aria-labelledby="capa-t" className="relative pt-28 xl:pt-0">
       <m.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } } }}
-        className="relative z-10 xl:absolute xl:top-32 xl:bottom-16 xl:left-10 xl:flex xl:w-[50%] xl:flex-col xl:justify-center xl:pl-14">
+        className="relative z-10 px-4 sm:px-6 lg:px-10 xl:absolute xl:inset-y-0 xl:left-0 xl:flex xl:w-[52%] xl:flex-col xl:justify-center xl:pt-20 xl:pl-16 2xl:pl-28">
         <h1 id="capa-t" className="font-display text-display font-bold text-chocolate xl:text-[clamp(4rem,5.2vw,5.5rem)]">
           <m.span variants={line} className="block">Docinho bom</m.span>
           <m.span variants={line} className="block text-morango">tem nome</m.span>
@@ -41,12 +41,12 @@ export const Hero = () => {
         </m.div>
       </m.div>
 
-      <div className="relative">
+      <div className="relative mt-12 xl:mt-0">
         {/* celular: corta só a mesa vazia da esquerda; do tablet para cima a foto aparece inteira */}
-        <div className="aspect-[16/10] overflow-hidden rounded-[2rem] bg-rosa sm:aspect-[1024/434] lg:rounded-[2.5rem]">
+        <div className="relative aspect-[16/10] overflow-hidden bg-rosa sm:aspect-[1024/434]">
           <m.img
             srcSet={capa.srcSet}
-            sizes="(min-width: 1440px) 1360px, 100vw"
+            sizes="100vw"
             src={capa.src}
             width={capa.width}
             height={capa.height}
@@ -57,11 +57,14 @@ export const Hero = () => {
             transition={{ duration: 1.6, ease: easeOutExpo }}
             className="size-full object-cover object-right"
           />
+          {/* a foto se dissolve no creme da página, sem borda reta (no topo só quando o texto fica em cima dela) */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-b from-transparent to-creme" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-1/5 bg-gradient-to-t from-transparent to-creme xl:hidden" />
         </div>
-        <Sticker tone="manteiga" rotate={-12} className="absolute -top-6 right-4 sm:right-8">
+        <Sticker tone="manteiga" rotate={-12} className="absolute -top-6 right-4 sm:right-8 xl:top-28 xl:right-[8%]">
           feito toda semana
         </Sticker>
-        <Sticker tone="morango" rotate={9} className="absolute -bottom-8 left-4 sm:left-8">
+        <Sticker tone="morango" rotate={9} className="absolute -bottom-8 left-4 sm:left-8 xl:left-16 2xl:left-28">
           a partir de {formatBRL(minPrice)}
         </Sticker>
       </div>

@@ -15,9 +15,9 @@ export const HowToOrder = () => (
       </m.p>
     </m.div>
 
-    <m.ol {...inView} variants={stagger(0.12)} className="mt-12 grid gap-6 md:grid-cols-3">
+    <m.ol {...inView} variants={stagger(0.12)} className="mt-12 grid gap-10 md:grid-cols-3 md:gap-12">
       {steps.map((step, i) => (
-        <m.li key={step} variants={rise} className="flex flex-col gap-5 rounded-[2rem] bg-white/70 p-6 lg:p-8">
+        <m.li key={step} variants={rise} className="flex flex-col gap-5">
           <Sticker tone={stickerOf[i]} rotate={i % 2 ? 8 : -8} className="size-16! text-[1.75rem]!">
             {i + 1}
           </Sticker>

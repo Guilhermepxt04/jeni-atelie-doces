@@ -13,7 +13,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="mx-2 mb-2 rounded-[2.5rem] bg-rosa px-6 pt-16 pb-10 sm:mx-3 sm:mb-3 sm:px-10 lg:px-14 lg:pt-20">
+    <footer className="bg-rosa px-6 pt-16 pb-10 sm:px-10 lg:px-14 lg:pt-20">
       <m.div {...inView} variants={stagger(0.08)} className="mx-auto grid max-w-[80rem] gap-12 md:grid-cols-[auto_1fr_1fr] md:items-start lg:gap-16">
         <m.img variants={rise} src={selo} alt="Jeni Ateliê, doces artesanais" width={600} height={600} loading="lazy" className="w-40 md:w-48" />
 
