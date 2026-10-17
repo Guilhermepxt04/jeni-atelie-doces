@@ -103,7 +103,7 @@ export const Nav = () => {
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.8, ease: easeDrawer }}
-            className="fixed inset-0 z-40 flex flex-col justify-end bg-creme px-6 pt-28 pb-[max(2.5rem,env(safe-area-inset-bottom))] text-chocolate lg:hidden"
+            className="fixed inset-0 z-[45] flex flex-col justify-end bg-creme px-6 pt-28 pb-[max(2.5rem,env(safe-area-inset-bottom))] text-chocolate lg:hidden"
           >
             <m.ul initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.06, delayChildren: 0.25 } } }}>
               {[...navLinks, { label: 'Dúvidas', href: '#duvidas' }].map(({ label, href }) => (

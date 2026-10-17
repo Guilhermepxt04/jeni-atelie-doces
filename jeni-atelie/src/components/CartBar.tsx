@@ -50,11 +50,11 @@ export const CartBar = () => {
                         <span className="flex-1 text-note font-semibold">{itemLabel(l.id)}</span>
                         <span className="text-note tabular-nums text-creme/80">{formatBRL((findItem(l.id)?.price ?? 0) * l.qty)}</span>
                         <span className="flex items-center gap-1 rounded-full bg-creme/10 p-1">
-                          <button type="button" onClick={() => remove(l.id)} aria-label={`Tirar um ${itemLabel(l.id)}`} className="grid size-9 place-items-center rounded-full transition-colors hover:bg-creme/15">
+                          <button type="button" onClick={() => remove(l.id)} aria-label={`Tirar um ${itemLabel(l.id)}`} className="grid size-11 place-items-center rounded-full transition-colors hover:bg-creme/15">
                             <Minus size={14} weight="bold" />
                           </button>
                           <span className="w-5 text-center text-note font-bold tabular-nums">{l.qty}</span>
-                          <button type="button" onClick={() => add(l.id)} aria-label={`Pôr mais um ${itemLabel(l.id)}`} className="grid size-9 place-items-center rounded-full transition-colors hover:bg-creme/15">
+                          <button type="button" onClick={() => add(l.id)} aria-label={`Pôr mais um ${itemLabel(l.id)}`} className="grid size-11 place-items-center rounded-full transition-colors hover:bg-creme/15">
                             <Plus size={14} weight="bold" />
                           </button>
                         </span>
