@@ -26,8 +26,9 @@ export const Occasions = () => {
         className="absolute inset-x-0 -top-[8%] h-[116%] w-full object-cover brightness-[.72] saturate-[.85]"
       />
 
+      <h2 id="ocasioes-t" className="sr-only">Encomendas por ocasião</h2>
       <m.div {...inView} variants={stagger(0.12)} className="relative max-w-[42rem] bg-cacau/70 px-6 pt-16 pb-10 sm:ml-[14%] sm:px-10 lg:pt-24">
-        <m.p id="ocasioes-t" variants={rise} className="font-display text-statement">{occasions.statement}</m.p>
+        <m.p variants={rise} className="font-display text-statement">{occasions.statement}</m.p>
         <m.p variants={rise} className="mt-5 font-display text-statement text-papel/80">{occasions.note}</m.p>
       </m.div>
 
@@ -44,8 +45,9 @@ export const Occasions = () => {
               show: { y: 0, opacity: 1, rotate: s.r, transition: { duration: 1.1, ease: easeOutExpo } },
             }}
             whileHover={{ y: -14, rotate: 0, transition: { type: 'spring', stiffness: 300, damping: 22 } }}
+            // altura mínima varia por papel; em telas baixas o papel cresce até caber o texto inteiro
             style={{ ['--h' as string]: `${s.h * 0.46}dvh` }}
-            className="flex origin-bottom flex-col gap-1 bg-papel px-4 pt-5 pb-6 text-note text-tinta lg:h-[var(--h)] lg:px-5 lg:pb-0"
+            className="flex origin-bottom flex-col gap-1 bg-papel px-4 pt-5 pb-6 text-note text-tinta lg:min-h-[var(--h)] lg:px-5 lg:pb-8"
           >
             <b className="text-body font-semibold">{s.title}</b>
             <span aria-hidden="true" className="mt-0.5 mb-1.5 overflow-hidden tracking-[0.05em] whitespace-nowrap text-tinta-suave">

@@ -21,13 +21,20 @@ export const Nav = () => {
     setShown(pastHero && (y < prev || y - prev < 2));
   });
 
-  // menu aberto: trava a rolagem, foca o primeiro link, Esc fecha e devolve o foco
+  // menu aberto: trava a rolagem, foca o primeiro link, Esc fecha e devolve o foco,
+  // e o Tab circula só entre os links do menu e o botão de fechar
   useEffect(() => {
     if (!open) return;
     document.documentElement.style.overflow = 'hidden';
     menuRef.current?.querySelector('a')?.focus();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setOpen(false); toggleRef.current?.focus(); }
+      if (e.key === 'Escape') { setOpen(false); toggleRef.current?.focus(); return; }
+      if (e.key !== 'Tab') return;
+      const items = [...(menuRef.current?.querySelectorAll<HTMLElement>('a') ?? []), toggleRef.current].filter(Boolean) as HTMLElement[];
+      const i = items.indexOf(document.activeElement as HTMLElement);
+      const next = e.shiftKey ? (i <= 0 ? items.length - 1 : i - 1) : (i === -1 || i === items.length - 1 ? 0 : i + 1);
+      e.preventDefault();
+      items[next]?.focus();
     };
     window.addEventListener('keydown', onKey);
     return () => { document.documentElement.style.overflow = ''; window.removeEventListener('keydown', onKey); };
@@ -39,6 +46,8 @@ export const Nav = () => {
     <>
       <m.nav
         aria-label="Principal"
+        // escondida sobre a capa, sai da ordem de foco: ninguém tabula para um botão que não vê
+        inert={!visible}
         initial={false}
         animate={{ y: visible ? 0 : -120, opacity: visible ? 1 : 0 }}
         transition={{ duration: 0.7, ease: easeDrawer }}
@@ -53,7 +62,7 @@ export const Nav = () => {
           <ul className="hidden items-center lg:flex">
             {navLinks.slice(0, 4).map(({ label, href }) => (
               <li key={href}>
-                <a href={href} className="block rounded-full px-4 py-2.5 text-note font-medium text-tinta-suave transition-colors duration-300 hover:bg-papel-2 hover:text-tinta">
+                <a href={href} className="flex min-h-11 items-center rounded-full px-4 text-note font-medium text-tinta-suave transition-colors duration-300 hover:bg-papel-2 hover:text-tinta">
                   {label}
                 </a>
               </li>

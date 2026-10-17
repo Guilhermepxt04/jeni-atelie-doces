@@ -28,7 +28,8 @@ const Paragraph = ({ text }: { text: string }) => {
 };
 
 export const Letter = () => (
-  <section id="sobre" aria-label="Uma carta da Jeni" className="flex flex-col items-center bg-cacau py-24 sm:px-6 lg:py-44">
+  <section id="sobre" aria-labelledby="sobre-t" className="flex flex-col items-center bg-cacau py-24 sm:px-6 lg:py-44">
+    <h2 id="sobre-t" className="sr-only">Uma carta da Jeni</h2>
     <m.article
       initial={{ opacity: 0, y: 60, rotate: -2 }}
       whileInView={{ opacity: 1, y: 0, rotate: 0 }}

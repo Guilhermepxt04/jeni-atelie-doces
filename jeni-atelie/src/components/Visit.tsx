@@ -44,8 +44,8 @@ export const Visit = () => {
             </div>
           ))}
         </m.dl>
-        <m.p variants={rise} className="mt-5 mb-6 font-semibold">
-          <a href={whatsappUrl()} target="_blank" rel="noopener" className="transition-colors hover:text-cobre">{WHATSAPP_DISPLAY}</a>
+        <m.p variants={rise} className="mt-3 mb-4 font-semibold">
+          <a href={whatsappUrl()} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center transition-colors hover:text-cobre">{WHATSAPP_DISPLAY}</a>
         </m.p>
         <m.div variants={rise} className="-mx-3 pb-3">
           <Cta href={whatsappUrl()} external tone="tinta" className="w-full" icon={<WhatsappLogo size={20} weight="light" />}>

@@ -178,7 +178,8 @@ export const BoxBuilder = () => {
             <div className="grid place-items-center pt-7 pb-2">
               <img src={seloClaro} alt="" width={640} height={640} loading="lazy" className="w-28" />
             </div>
-            <svg viewBox="0 0 360 360" role="img" aria-label={`Caixa com ${filled} de ${size} doces`} className="block w-full px-[6%] pb-[6%]">
+            {/* role="group" (e não "img"): os doces dentro são botões e precisam continuar visíveis para o leitor de tela */}
+            <svg viewBox="0 0 360 360" role="group" aria-label={`Caixa com ${filled} de ${size} doces. Toque num doce para tirar.`} className="block w-full px-[6%] pb-[6%]">
               {slots.map((id, k) => {
                 const f = id ? byId[id] : null;
                 const x = ((k % cols) + 0.5) * (360 / cols);
@@ -194,9 +195,16 @@ export const BoxBuilder = () => {
                     role={f ? 'button' : undefined}
                     tabIndex={f ? 0 : -1}
                     aria-label={f ? `Tirar ${f.name}` : undefined}
-                    className={f ? 'cursor-pointer outline-none' : ''}
+                    className={f ? 'group/slot cursor-pointer outline-none' : ''}
                   >
                     <rect x={-CELL / 2 + 3} y={-CELL / 2 + 3} width={CELL - 6} height={CELL - 6} rx={6} fill={palette.cacau2} />
+                    {/* anel de foco desenhado no próprio SVG, já que outline não acompanha o <g> */}
+                    <rect
+                      aria-hidden="true"
+                      x={-CELL / 2 + 6} y={-CELL / 2 + 6} width={CELL - 12} height={CELL - 12} rx={8}
+                      fill="none" stroke={palette.cobreClaro} strokeWidth={4}
+                      className="opacity-0 transition-opacity duration-200 group-focus-visible/slot:opacity-100"
+                    />
                     <path d={cupPath(CELL * 0.4)} fill={f ? '#d9b8a3' : '#5a3d32'} style={{ transition: 'fill .4s' }} />
                     <AnimatePresence>
                       {f && (

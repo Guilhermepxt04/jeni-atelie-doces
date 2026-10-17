@@ -42,10 +42,10 @@ export const Footer = () => {
               loading="lazy"
               className="absolute top-6 right-6 aspect-[3/4] w-16 border-[6px] border-papel bg-papel object-cover outline-1 outline-tinta/10 sm:w-22 lg:top-0 lg:right-0"
             />
-            <ul className="grid gap-3 text-[1.0625rem]">
+            <ul className="grid gap-0.5">
               {links.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})} className="transition-colors duration-300 hover:text-cobre hover:underline hover:underline-offset-4">
+                  <a href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})} className="inline-flex min-h-11 items-center transition-colors duration-300 hover:text-cobre hover:underline hover:underline-offset-4">
                     {l.label}
                   </a>
                 </li>

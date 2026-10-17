@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, m, useScroll, useTransform } from 'framer-motion';
+import { Pause, Play } from '@phosphor-icons/react';
 import { hero, navLinks } from '../content';
 import { img, selo, type Picture } from '../images';
 import { easeOutExpo } from '../theme';
@@ -22,6 +23,7 @@ export const Hero = () => {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   // o selo gira devagar e a foto afunda enquanto a capa sai da tela
   const sealRotate = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -50]);
@@ -29,15 +31,16 @@ export const Hero = () => {
   const photoScale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 1.08]);
 
   // a foto troca devagar, como a luz mudando na cozinha; pausa com a aba escondida
+  // e pelo botão no canto da foto (conteúdo que se move sozinho precisa poder parar)
   useEffect(() => {
-    if (reduce) return;
+    if (reduce || paused) return;
     let id = 0;
     const start = () => { id = window.setInterval(() => setSlide((s) => (s + 1) % slides.length), 5600); };
     const onVis = () => { clearInterval(id); if (!document.hidden) start(); };
     start();
     document.addEventListener('visibilitychange', onVis);
     return () => { clearInterval(id); document.removeEventListener('visibilitychange', onVis); };
-  }, [reduce]);
+  }, [reduce, paused]);
 
   return (
     <section ref={ref} aria-label="Jeni Ateliê" className="grid min-h-[100dvh] gap-3 bg-blush p-3 lg:grid-cols-2">
@@ -83,7 +86,7 @@ export const Hero = () => {
 
         <nav aria-label="Seções" className="hidden flex-wrap justify-center gap-x-1 px-6 pb-6 lg:flex">
           {navLinks.slice(2).map(({ label, href }) => (
-            <a key={href} href={href} className="rounded-full px-4 py-2 text-note text-tinta-suave transition-colors duration-300 hover:bg-papel-2 hover:text-tinta">
+            <a key={href} href={href} className="inline-flex min-h-11 items-center rounded-full px-4 text-note text-tinta-suave transition-colors duration-300 hover:bg-papel-2 hover:text-tinta">
               {label}
             </a>
           ))}
@@ -113,13 +116,24 @@ export const Hero = () => {
         <div className="absolute bottom-4 left-4 flex gap-1.5" aria-hidden="true">
           {slides.map((_, i) => (
             <span key={i} className="h-1 w-6 overflow-hidden rounded-full bg-papel/35">
-              {i === slide && !reduce && (
+              {i === slide && !reduce && !paused && (
                 <m.span key={slide} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 5.6, ease: 'linear' }} className="block h-full origin-left bg-papel" />
               )}
-              {i === slide && reduce && <span className="block h-full bg-papel" />}
+              {i === slide && (reduce || paused) && <span className="block h-full bg-papel" />}
             </span>
           ))}
         </div>
+        {!reduce && (
+          <button
+            type="button"
+            onClick={() => setPaused((p) => !p)}
+            aria-label={paused ? 'Retomar a troca de fotos' : 'Pausar a troca de fotos'}
+            aria-pressed={paused}
+            className="absolute right-3 bottom-3 grid size-11 place-items-center rounded-full bg-papel/90 text-tinta transition-[background-color,transform] duration-300 hover:bg-papel active:scale-95"
+          >
+            {paused ? <Play size={16} weight="light" /> : <Pause size={16} weight="light" />}
+          </button>
+        )}
       </figure>
     </section>
   );
