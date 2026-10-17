@@ -5,6 +5,10 @@ import { Ambient } from './components/Ambient';
 import { FlavorRibbon } from './components/FlavorRibbon';
 import { Showcase } from './components/Showcase';
 import { CakeOrder } from './components/CakeOrder';
+import { HowToOrder } from './components/HowToOrder';
+import { About } from './components/About';
+import { Faq } from './components/Faq';
+import { Footer } from './components/Footer';
 import { CartProvider } from './cart-context';
 import { CartBar } from './components/CartBar';
 import { FloatingWhatsapp } from './components/FloatingWhatsapp';
@@ -29,7 +33,11 @@ export default function App() {
           <FlavorRibbon />
           <Showcase />
           <CakeOrder />
+          <HowToOrder />
+          <About />
+          <Faq />
         </main>
+        <Footer />
         <CartBar />
         <FloatingWhatsapp />
       </CartProvider>
