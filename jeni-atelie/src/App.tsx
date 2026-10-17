@@ -5,6 +5,8 @@ import { Ambient } from './components/Ambient';
 import { FlavorRibbon } from './components/FlavorRibbon';
 import { Showcase } from './components/Showcase';
 import { CartProvider } from './cart-context';
+import { CartBar } from './components/CartBar';
+import { FloatingWhatsapp } from './components/FloatingWhatsapp';
 import { ScrollProgress } from './components/motion';
 import { useLenis } from './hooks/motion';
 
@@ -26,6 +28,8 @@ export default function App() {
           <FlavorRibbon />
           <Showcase />
         </main>
+        <CartBar />
+        <FloatingWhatsapp />
       </CartProvider>
       </MotionConfig>
     </LazyMotion>
