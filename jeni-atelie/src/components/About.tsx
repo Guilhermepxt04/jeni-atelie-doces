@@ -3,15 +3,15 @@ import { photos } from '../images';
 import { inView, rise, stagger } from '../hooks/motion';
 import { Sticker } from './ui';
 
-// Recado curto da Jeni, com uma foto real dos potes dela
+// Recado curto da Jeni, com a fileira de potes dela
 export const About = () => {
-  const p = photos['jeni-potes-mesa'];
+  const p = photos['gerada-potes-mesa'];
   return (
     <section aria-labelledby="sobre-t" className="px-4 py-20 sm:px-6 lg:px-10 lg:py-28">
       <div className="mx-auto grid max-w-[80rem] items-center gap-10 md:grid-cols-[1fr_1fr] lg:gap-16">
         <div className="relative mx-auto w-full max-w-[32rem]">
           <div className="aspect-[3/4] overflow-hidden rounded-[2.5rem]">
-            <img srcSet={p.srcSet} sizes="(min-width: 768px) 32rem, 92vw" src={p.src} width={p.width} height={p.height} alt={p.alt} loading="lazy" className="size-full object-cover object-[50%_25%]" />
+            <img srcSet={p.srcSet} sizes="(min-width: 768px) 32rem, 92vw" src={p.src} width={p.width} height={p.height} alt={p.alt} loading="lazy" className="size-full object-cover" />
           </div>
           <Sticker tone="morango" rotate={10} className="absolute -right-4 -bottom-4">feito pela Jeni</Sticker>
         </div>

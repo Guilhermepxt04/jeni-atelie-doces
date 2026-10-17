@@ -48,11 +48,6 @@ def main() -> None:
         recortar_no_doce(ajustar(sem_fundo)).save(DESTINO / destino, optimize=True)
         print('ok', destino)
 
-    mesa = Image.open(ORIGEM / 'potes-mesa-natal.webp').convert('RGB')
-    w, h = mesa.size
-    ajustar(mesa.crop((int(w * 0.4), int(h * 0.25), w, h))).save(DESTINO / 'potes-mesa.jpg', quality=90)
-    print('ok potes-mesa.jpg')
-
 
 if __name__ == '__main__':
     main()
