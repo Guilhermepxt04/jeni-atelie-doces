@@ -30,9 +30,11 @@ export const FloatingWhatsapp = () => {
           transition={settle}
           whileTap={{ scale: 0.92 }}
           style={{ bottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}
-          className={`fixed right-5 z-40 grid size-14 place-items-center rounded-full bg-cobre text-papel ${floatShadow} lg:hidden`}
+          className={`fixed right-4 z-40 rounded-full bg-papel/80 p-1.5 ${floatShadow} lg:hidden`}
         >
-          <WhatsappLogo size={26} weight="light" />
+          <span className="grid size-13 place-items-center rounded-full bg-cobre text-papel">
+            <WhatsappLogo size={26} weight="light" />
+          </span>
         </m.a>
       )}
     </AnimatePresence>

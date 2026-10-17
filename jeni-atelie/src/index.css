@@ -22,6 +22,10 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
+  /* toda transition-* sem curva própria usa a curva do ateliê, com peso de objeto físico */
+  --default-transition-duration: 450ms;
+  --default-transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+
   /* cinco tamanhos de texto fazem a página inteira */
   --text-display: clamp(2.75rem, 1.4rem + 4.6vw, 5.75rem);
   --text-display--line-height: 0.96;

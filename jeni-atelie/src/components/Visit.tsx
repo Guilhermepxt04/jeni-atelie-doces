@@ -29,11 +29,13 @@ export const Visit = () => {
         />
       </div>
 
+      {/* moldura dupla: uma bandeja translúcida de papel segura o cartão, como num porta-cartão */}
       <m.div
         {...inView}
         variants={stagger(0.07)}
-        className="relative mx-4 -mt-20 flex flex-col bg-papel px-7 pt-8 sm:mx-auto sm:max-w-[24rem] lg:absolute lg:top-16 lg:right-16 lg:mx-0 lg:mt-0 lg:w-[24rem]"
+        className="relative mx-3 -mt-20 rounded-[2rem] bg-papel/35 p-2 sm:mx-auto sm:max-w-[25rem] lg:absolute lg:top-16 lg:right-16 lg:mx-0 lg:mt-0 lg:w-[25rem]"
       >
+        <div className="flex flex-col overflow-hidden rounded-[calc(2rem-0.5rem)] bg-papel px-7 pt-8">
         <m.h2 id="contato-t" variants={rise} className="font-display text-statement">Fale com a Jeni</m.h2>
         <m.p variants={rise} className="mt-3">Ateliê em {BAIRRO}.<br />O endereço de retirada vai na confirmação.</m.p>
         <m.dl variants={rise} className="mt-5 grid gap-1.5 tabular-nums">
@@ -52,6 +54,7 @@ export const Visit = () => {
             Chamar no WhatsApp
           </Cta>
         </m.div>
+        </div>
       </m.div>
     </section>
   );

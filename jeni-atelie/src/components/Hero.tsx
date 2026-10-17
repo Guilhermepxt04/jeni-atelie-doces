@@ -3,7 +3,7 @@ import { AnimatePresence, m, useScroll, useTransform } from 'framer-motion';
 import { Pause, Play } from '@phosphor-icons/react';
 import { hero, navLinks } from '../content';
 import { img, selo, type Picture } from '../images';
-import { easeOutExpo } from '../theme';
+import { easeDrawer, easeOutExpo } from '../theme';
 import { Cta, Magnetic, TextLink } from './motion';
 import { useReducedMotion } from '../hooks/motion';
 
@@ -107,7 +107,7 @@ export const Hero = () => {
               alt={slides[slide].alt}
               fetchPriority={slide === 0 ? 'high' : undefined}
               initial={{ opacity: 0, scale: 1.08 }}
-              animate={{ opacity: 1, scale: 1, transition: { opacity: { duration: 1.6, ease: 'easeOut' }, scale: { duration: 7, ease: easeOutExpo } } }}
+              animate={{ opacity: 1, scale: 1, transition: { opacity: { duration: 1.6, ease: easeDrawer }, scale: { duration: 7, ease: easeOutExpo } } }}
               exit={{ opacity: 0, transition: { duration: 1.6, delay: 0.2 } }}
               className="absolute inset-0 size-full object-cover"
             />
@@ -117,7 +117,7 @@ export const Hero = () => {
           {slides.map((_, i) => (
             <span key={i} className="h-1 w-6 overflow-hidden rounded-full bg-papel/35">
               {i === slide && !reduce && !paused && (
-                <m.span key={slide} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 5.6, ease: 'linear' }} className="block h-full origin-left bg-papel" />
+                <m.span key={slide} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 5.6, ease: 'linear' }} /* linear de propósito: é um relógio até a próxima foto */ className="block h-full origin-left bg-papel" />
               )}
               {i === slide && (reduce || paused) && <span className="block h-full bg-papel" />}
             </span>
