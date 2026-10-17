@@ -17,7 +17,7 @@ const toneBg: Record<Tone, string> = {
   manteiga: 'bg-tone-manteiga',
 };
 
-// fotos reais recortadas (fundo transparente): ficam inteiras, sobre um fundo claro
+// fotos reais recortadas (fundo transparente): ficam inteiras, assentadas no pé do arco, longe da curva do topo
 const cutouts = new Set<PhotoKey>(['jeni-pote', 'jeni-empadao']);
 
 const Photo = ({ k, sizes, className = '' }: { k: PhotoKey; sizes: string; className?: string }) => {
@@ -31,7 +31,7 @@ const Photo = ({ k, sizes, className = '' }: { k: PhotoKey; sizes: string; class
       height={p.height}
       alt={p.alt}
       loading="lazy"
-      className={`size-full ${cutouts.has(k) ? 'object-contain p-6' : 'object-cover'} ${className}`}
+      className={`size-full ${cutouts.has(k) ? 'object-contain object-bottom px-[10%] pt-[16%] pb-[4%]' : 'object-cover'} ${className}`}
     />
   );
 };

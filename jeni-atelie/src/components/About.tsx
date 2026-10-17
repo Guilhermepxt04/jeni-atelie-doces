@@ -11,7 +11,7 @@ export const About = () => {
       <div className="mx-auto grid max-w-[72rem] items-center gap-10 md:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="relative mx-auto w-full max-w-[18rem]">
           <Arch className="aspect-[3/4] bg-white/60">
-            <img srcSet={p.srcSet} sizes="18rem" src={p.src} width={p.width} height={p.height} alt={p.alt} loading="lazy" className="size-full object-cover" />
+            <img srcSet={p.srcSet} sizes="18rem" src={p.src} width={p.width} height={p.height} alt={p.alt} loading="lazy" className="size-full object-cover object-[50%_25%]" />
           </Arch>
           <Sticker tone="morango" rotate={10} className="absolute -right-4 -bottom-4">feito pela Jeni</Sticker>
         </div>

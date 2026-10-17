@@ -28,7 +28,7 @@ export const Sticker = ({ children, tone = 'manteiga', rotate = -10, className =
       whileInView={{ scale: 1, rotate, opacity: 1 }}
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       transition={reduce ? { duration: 0 } : pop}
-      className={`grid size-24 place-items-center rounded-full p-3 text-center font-display text-[0.9375rem] leading-[1.05] font-bold ${stickerTones[tone]} ${className}`}
+      className={`grid size-28 place-items-center rounded-full p-3 text-center font-display text-base leading-[1.05] sm:size-32 sm:text-lg font-bold ${stickerTones[tone]} ${className}`}
     >
       {children}
     </m.span>
