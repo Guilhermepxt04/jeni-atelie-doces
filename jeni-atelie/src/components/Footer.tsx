@@ -66,7 +66,7 @@ export const Footer = () => {
           className="mx-auto mt-24 w-[min(78vw,34rem)] lg:mt-36"
         />
 
-        <div className="mx-auto mt-20 max-w-[62ch] text-note text-papel/70">
+        <div className="on-dark mx-auto mt-20 max-w-[62ch] text-note text-papel/70">
           <p>Fotos ilustrativas, de acervos abertos. Não são produtos do ateliê.</p>
           <p className="mt-1.5">
             {credits.map((c, i) => (

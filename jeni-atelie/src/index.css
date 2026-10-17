@@ -81,6 +81,10 @@
     outline: 2px solid var(--color-cobre);
     outline-offset: 3px;
   }
+  /* sobre o cacau o cobre fica em 2,6:1; o contorno passa a ser papel (13,7:1) */
+  .on-dark :focus-visible {
+    outline-color: var(--color-papel);
+  }
 }
 
 /* Lenis: a rolagem suave não briga com a nativa */

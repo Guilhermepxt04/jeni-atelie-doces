@@ -96,6 +96,11 @@ export const BoxBuilder = () => {
   }, [tally, size, filled, price]);
 
   // o espaço livre é procurado dentro do updater: toques rápidos seguidos não caem no mesmo lugar
+  const isFullNotice = full > 0 && filled === size;
+  const status = isFullNotice
+    ? 'Caixa cheia. Toque num doce para tirar.'
+    : `${filled} de ${size} doces na caixa com ${size}, R$ ${price}.`;
+
   const add = (id: string) => {
     if (!slots.includes(null)) { setFull((n) => n + 1); return; }
     setSlots((s) => {
@@ -228,12 +233,15 @@ export const BoxBuilder = () => {
         </div>
 
         <div className="mt-6 flex items-end justify-between px-2">
-          <m.p key={full} animate={full ? { x: [0, -6, 6, -3, 0] } : {}} transition={{ duration: 0.4 }} aria-live="polite" className={`font-medium ${filled === size ? 'text-cobre' : ''}`}>
-            {full > 0 && filled === size ? 'Caixa cheia. Toque num doce para tirar.' : (
+          {/* o NumberFlow desenha os dígitos numa árvore encapsulada, que leitores de tela anunciam mal:
+              a região viva é este texto simples, e o contador animado fica só para os olhos */}
+          <p aria-live="polite" className="sr-only">{status}</p>
+          <m.p key={full} aria-hidden="true" animate={full ? { x: [0, -6, 6, -3, 0] } : {}} transition={{ duration: 0.4 }} className={`font-medium ${filled === size ? 'text-cobre' : ''}`}>
+            {isFullNotice ? status : (
               <><NumberFlow value={filled} /> de {size} doces</>
             )}
           </m.p>
-          <p className="font-display text-statement leading-none tabular-nums">
+          <p aria-hidden="true" className="font-display text-statement leading-none tabular-nums">
             <NumberFlow value={price} format={{ style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }} locales="pt-BR" />
           </p>
         </div>

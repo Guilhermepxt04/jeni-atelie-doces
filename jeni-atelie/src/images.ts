@@ -7,8 +7,9 @@ import cupcake from './assets/img/chocolate-cupcakes-with-raspberry-buttercream-
 import bico from './assets/img/piping-nozzle-star-cake-decorating-karl-muffler.jpg?w=480;900&format=webp&as=metadata';
 import parapeito from './assets/img/picsum-102.jpg?w=800;1600&format=webp&as=metadata';
 import brigadeiros from './assets/img/brigadeiros.jpg?w=240;480&format=webp&as=metadata';
-import seloUrl from './assets/img/selo-jeni.png?w=600&format=webp&quality=78';
-import seloClaroUrl from './assets/img/selo-jeni-claro.png?w=600&format=webp&quality=78';
+// selo sem o grão e a sombra do papel da foto original: ~44 kB em vez de ~135 kB
+import seloUrl from './assets/img/selo-jeni-limpo.png?w=600&format=webp&quality=78';
+import seloClaroUrl from './assets/img/selo-jeni-claro-limpo.png?w=600&format=webp&quality=78';
 
 export type Picture = { srcSet: string; src: string; width: number; height: number };
 
