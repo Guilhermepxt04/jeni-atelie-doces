@@ -131,7 +131,7 @@ export const formatBRL = (value: number): string =>
     maximumFractionDigits: 2,
   })
     .format(value)
-    .replace(/ /g, ' ');
+    .replace(/\u00a0/g, ' ');
 
 export const minPrice = Math.min(...menu.flatMap((g) => g.items.map((i) => i.price)));
 
