@@ -2,6 +2,17 @@ import type { ReactNode } from 'react';
 import { m } from 'framer-motion';
 import { useReducedMotion } from '../hooks/motion';
 import { pop } from '../theme';
+import type { Picture } from '../images';
+
+// Foto larga de ponta a ponta: o doce fica à esquerda e as bordas de cima e de baixo se dissolvem
+// no creme da página. No celular mostra só o lado do doce.
+export const WidePhoto = ({ photo, sizes, className = '' }: { photo: Picture & { alt: string }; sizes: string; className?: string }) => (
+  <div className={`relative aspect-[4/3] overflow-hidden sm:aspect-[43/24] ${className}`}>
+    <img srcSet={photo.srcSet} sizes={sizes} src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" className="size-full object-cover object-left" />
+    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-1/6 bg-gradient-to-t from-transparent to-creme" />
+    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-b from-transparent to-creme" />
+  </div>
+);
 
 const stickerTones = {
   manteiga: 'bg-manteiga text-chocolate',

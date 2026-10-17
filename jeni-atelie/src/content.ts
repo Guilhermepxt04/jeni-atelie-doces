@@ -72,7 +72,7 @@ export const menu: MenuGroup[] = [
     prefix: 'Fatia',
     blurb: 'Uma fatia generosa para quem quer um pedaço de bolo sem esperar a festa.',
     tone: 'pessego',
-    photos: ['jeni-fatia', 'gerada-pudim', 'gerada-torta', 'gerada-banoffee'],
+    photos: ['jeni-fatia', 'gerada-torta', 'gerada-banoffee'],
     items: [
       { id: 'fatia-choco-maracuja', name: 'Chocolate com maracujá', price: 15 },
       { id: 'fatia-ninho-morango', name: 'Ninho com morango', price: 18 },

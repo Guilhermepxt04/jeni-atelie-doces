@@ -6,6 +6,7 @@ import { useCart } from '../cart-context';
 import { photos, type PhotoKey } from '../images';
 import { easeOutExpo, pop } from '../theme';
 import { inView, rise, stagger } from '../hooks/motion';
+import { WidePhoto } from './ui';
 
 const toneBg: Record<Tone, string> = {
   caramelo: 'bg-tone-caramelo',
@@ -16,7 +17,7 @@ const toneBg: Record<Tone, string> = {
   manteiga: 'bg-tone-manteiga',
 };
 
-// fotos reais recortadas (fundo transparente): ficam inteiras, soltas sobre a cor do cartão
+// fotos reais recortadas (fundo transparente): ficam inteiras dentro da bolinha
 const cutouts = new Set<PhotoKey>(['jeni-pote', 'jeni-empadao']);
 
 const Photo = ({ k, sizes, className = '' }: { k: PhotoKey; sizes: string; className?: string }) => {
@@ -67,36 +68,31 @@ const ItemRow = ({ id, name, price }: { id: string; name: string; price: number 
   );
 };
 
-// Um grupo: foto dominante (com fotinhas extras flutuando) e a lista de sabores, direto sobre a página
+// Um grupo: foto larga de ponta a ponta (com fotinhas extras flutuando sobre ela) e a lista de sabores.
+// Telas grandes: a lista fica no creme vazio da direita da foto. Celular: a lista vem embaixo.
 const GroupCard = ({ group, headingLevel = 'h3' }: { group: MenuGroup; headingLevel?: 'h3' | 'p' }) => {
   const [main, ...extras] = group.photos;
   const Heading = headingLevel;
   return (
-    <div className="grid h-full gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
-      <div className="relative mx-auto w-full lg:max-w-[36rem]">
-        <m.div
-          initial={{ rotate: -6, scale: 0.92, opacity: 0 }}
-          animate={{ rotate: 0, scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: easeOutExpo }}
-        >
-          <div className={`aspect-[3/4] ${cutouts.has(main) ? '' : 'overflow-hidden rounded-[2.5rem]'}`}>
-            <Photo k={main} sizes="(min-width: 1024px) 36rem, 85vw" />
-          </div>
+    <div className="relative">
+      <div className="relative">
+        <m.div initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, ease: easeOutExpo }}>
+          <WidePhoto photo={photos[main]} sizes="(min-width: 1024px) 100vw, 85vw" />
         </m.div>
         {extras.slice(0, 2).map((k, i) => (
           <span
             key={k}
             style={{ animationDelay: `${-i * 2.4}s` }}
-            className={`absolute size-16 overflow-hidden rounded-full border-4 border-white lg:size-24 motion-safe:animate-[float_5.5s_ease-in-out_infinite_alternate] ${i === 0 ? '-bottom-4 -left-3' : '-right-3 bottom-16'}`}
+            className={`absolute size-16 overflow-hidden rounded-full border-4 border-white lg:size-28 motion-safe:animate-[float_5.5s_ease-in-out_infinite_alternate] ${i === 0 ? 'bottom-2 left-3 lg:bottom-[12%] lg:left-[5%]' : 'bottom-10 left-20 lg:bottom-[22%] lg:left-[14%]'}`}
           >
-            <Photo k={k} sizes="96px" />
+            <Photo k={k} sizes="112px" />
           </span>
         ))}
       </div>
-      <div>
+      <div className="mt-4 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:flex lg:w-[46%] lg:flex-col lg:justify-center lg:pr-16 xl:pr-24">
         <Heading className="font-display text-statement font-bold">{group.title}</Heading>
         <p className="mt-2 max-w-[40ch] text-chocolate-suave">{group.blurb}</p>
-        <ul className="mt-5 grid gap-0.5">
+        <ul className="mt-5 grid max-w-[34rem] gap-0.5">
           {group.items.map((it) => <ItemRow key={it.id} {...it} />)}
         </ul>
       </div>
@@ -119,17 +115,17 @@ export const Showcase = () => {
   };
 
   return (
-    <section id="cardapio" aria-labelledby="cardapio-t" className="mx-auto max-w-[90rem] px-4 py-20 sm:px-6 lg:px-10 lg:py-28">
-      <m.div {...inView} variants={stagger(0.08)} className="max-w-[44rem]">
+    <section id="cardapio" aria-labelledby="cardapio-t" className="py-20 lg:py-28">
+      <m.div {...inView} variants={stagger(0.08)} className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-10 [&>*]:max-w-[44rem]">
         <m.h2 variants={rise} id="cardapio-t" className="font-display text-display font-bold">Escolha seu docinho</m.h2>
         <m.p variants={rise} className="mt-5 text-lead text-chocolate-suave">
           Toque no sabor para colocar na sacolinha. Pronta-entrega enquanto durar o estoque; o que acabar, a Jeni faz sob encomenda.
         </m.p>
       </m.div>
 
-      {/* telas grandes: abas + um cartão por vez */}
+      {/* telas grandes: abas + um grupo por vez, com a foto de ponta a ponta */}
       <div className="mt-12 hidden lg:block">
-        <div role="tablist" aria-label="Grupos do cardápio" className="flex flex-wrap gap-2">
+        <div role="tablist" aria-label="Grupos do cardápio" className="mx-auto flex max-w-[90rem] flex-wrap gap-2 px-10">
           {menu.map((g, i) => (
             <button
               key={g.id}
@@ -163,7 +159,7 @@ export const Showcase = () => {
       </div>
 
       {/* celular: carrossel de arrastar, rolagem nativa com encaixe (sem JS no gesto) */}
-      <ul className="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-4 pb-4 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+      <ul className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-4 pb-4 sm:px-6 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
         {menu.map((g) => (
           <li key={g.id} className="w-[85vw] max-w-[26rem] shrink-0 snap-center">
             <GroupCard group={g} />
