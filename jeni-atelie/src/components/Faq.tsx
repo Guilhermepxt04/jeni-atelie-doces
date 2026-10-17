@@ -52,7 +52,7 @@ export const Faq = () => {
           Não achou a resposta? A Jeni responde no WhatsApp.
         </m.p>
         <m.div variants={rise} className="mt-4">
-          <TextLink href={whatsappUrl('Oi, Jeni! Tenho uma dúvida sobre os doces.')} external className="text-morango-forte">
+          <TextLink href={whatsappUrl('Oi, Jeni! Tenho uma dúvida sobre os doces.')} external className="text-chocolate">
             Perguntar no WhatsApp
           </TextLink>
         </m.div>

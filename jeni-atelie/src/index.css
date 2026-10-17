@@ -96,4 +96,8 @@ html.lenis, html.lenis body { height: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; }
+  /* menos movimento: as entradas não esperam a rolagem; o conteúdo já nasce visível e nítido
+     (o framer-motion escreve opacity/filter inline no estado inicial das entradas) */
+  main [style*="opacity"], footer [style*="opacity"] { opacity: 1 !important; }
+  main [style*="blur"], footer [style*="blur"] { filter: none !important; }
 }

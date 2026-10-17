@@ -1,19 +1,42 @@
 # Jeni Ateliê
 
-Landing page da confeitaria Jeni Ateliê. O app fica em `jeni-atelie/`: Vite, React 19, TypeScript, Tailwind 4, framer-motion e Lenis, com o HTML pré-renderizado no build (mesma base da landing da Eleva Tech).
+Landing page da confeitaria Jeni Ateliê: bolos de pote, fatias, coxinhas de morango, brownies e bolos inteiros sob encomenda, com pedido pelo WhatsApp.
+
+O app fica em `jeni-atelie/`: Vite, React 19, TypeScript, Tailwind 4, framer-motion e Lenis, com o HTML pré-renderizado no build (mesma base da landing da Eleva Tech).
 
 ```bash
 cd jeni-atelie
 npm install
 npm run dev      # http://localhost:5173
-npm run build    # gera dist/ já com o conteúdo da página no HTML
+npm test         # cardápio, sacolinha, mensagens do WhatsApp, fotos e JSON-LD
+npm run build    # gera dist/ já com o conteúdo e o JSON-LD do cardápio no HTML
 ```
 
 Publicação: `dist/` é estático. O `wrangler.jsonc` já serve a pasta no Cloudflare, com a `404.html`.
 
+## Como a página está montada
+
+| Seção | Arquivo |
+|---|---|
+| Capa | `src/components/Hero.tsx` |
+| Faixa de sabores | `src/components/FlavorRibbon.tsx` |
+| Cardápio (abas no computador, carrossel no celular) | `src/components/Showcase.tsx` |
+| Sacolinha (pedido pronto no WhatsApp) | `src/components/CartBar.tsx`, `src/cart.ts`, `src/cart-context.tsx` |
+| Bolos sob encomenda | `src/components/CakeOrder.tsx` |
+| Como pedir, Quem faz, Dúvidas, Rodapé | `HowToOrder.tsx`, `About.tsx`, `Faq.tsx`, `Footer.tsx` |
+
+Todo o texto e o cardápio (sabores e preços) ficam em `src/content.ts`. As cores e as fontes ficam em `src/index.css` e `src/theme.ts` (direção "Morango & caramelo").
+
+## Fotos
+
+- Fotos reais da Jeni: originais em `fotos-jeni/`. O script `jeni-atelie/scripts/tratar-fotos.py` remove o fundo e ajusta a luz e a cor (`pip install "rembg[cpu]" pillow`).
+- Fotos geradas no Gemini a partir de referências: `Fotos Gemini/` e `jeni-atelie/src/assets/img/gerada/`. Os prompts estão em `docs/prompts-gemini.md`.
+- Ainda falta a foto do bolo inteiro (prompt 8). Até ela chegar, a seção de encomendas mostra um desenho.
+- O morango cravejado aparece no cardápio sem foto própria.
+
 ## Antes de publicar
 
-- `src/content.ts`: WhatsApp, e-mail, Instagram, bairro, preços, prazos e a carta da Jeni são exemplo.
-- Domínio de exemplo `jeniatelie.com.br` em `index.html`, `public/robots.txt` e `public/sitemap.xml`.
-- Fotos: são de acervos abertos, com crédito no rodapé (`content.ts > credits`). Troque pelas fotos dos doces da Jeni quando houver.
-- Logo: o selo foi recortado de uma foto. Uma versão em vetor deixa a página mais leve e nítida.
+- Em `src/content.ts`, confira o número do WhatsApp, o e-mail, o Instagram, os horários e as respostas das dúvidas, que ainda são exemplo.
+- Ainda em `src/content.ts`, quando o iFood ou o 99Food reabrirem, preencha `channels.<canal>.url` e troque `soon` para `false`.
+- O recado da Jeni em `src/components/About.tsx` é um rascunho para ela confirmar.
+- O domínio de exemplo `jeniatelie.com.br` aparece em `index.html`, `src/seo.ts`, `public/robots.txt` e `public/sitemap.xml`.

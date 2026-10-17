@@ -21,7 +21,7 @@ export const HowToOrder = () => (
           <Sticker tone={stickerOf[i]} rotate={i % 2 ? 8 : -8} className="size-16! text-[1.75rem]!">
             {i + 1}
           </Sticker>
-          <p className="text-lead">{step}</p>
+          <p>{step}</p>
         </m.li>
       ))}
     </m.ol>

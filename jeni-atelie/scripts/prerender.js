@@ -7,7 +7,7 @@ const root = fileURLToPath(new URL('..', import.meta.url))
 const indexPath = `${root}dist/index.html`
 const ssrDir = `${root}dist-ssr`
 
-const { render } = await import(pathToFileURL(`${ssrDir}/entry-server.js`).href)
+const { render, jsonLd } = await import(pathToFileURL(`${ssrDir}/entry-server.js`).href)
 const template = await readFile(indexPath, 'utf-8')
 
 const placeholder = '<div id="root"></div>'
@@ -20,7 +20,12 @@ const font = (await readdir(`${root}dist/assets`)).find((f) => /^fraunces-latin-
 const preload = font ? `<link rel="preload" href="/assets/${font}" as="font" type="font/woff2" crossorigin />\n  ` : ''
 if (!font) console.warn('prerender: fonte Fraunces não encontrada em dist/assets, sem preload')
 
+if (!template.includes('<!--json-ld-->')) {
+  throw new Error('prerender: marcador <!--json-ld--> não encontrado em dist/index.html')
+}
+
 await writeFile(indexPath, template
+  .replace('<!--json-ld-->', `<script type="application/ld+json">${jsonLd}</script>`)
   .replace('</head>', `${preload}</head>`)
   .replace(placeholder, `<div id="root">${render()}</div>`))
 await rm(ssrDir, { recursive: true, force: true })
