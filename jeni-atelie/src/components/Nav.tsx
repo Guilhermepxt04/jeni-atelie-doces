@@ -1,24 +1,29 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, m, useMotionValueEvent, useScroll } from 'framer-motion';
-import { navLinks } from '../content';
+import { areas } from '../content';
 import { selo } from '../images';
 import { easeDrawer, easeOutExpo } from '../theme';
 
-const floatShadow = 'shadow-[0_18px_50px_-18px_rgba(46,28,22,0.45)]'; // taste-skill-ignore: a ilha da navegação é fixa e flutua sobre a página
+const floatShadow = 'shadow-[0_14px_40px_-16px_rgba(58,29,20,0.28)]'; // taste-skill-ignore: a ilha da navegação é fixa e flutua sobre a página
 
-// Ilha flutuante: some sobre a capa (o cartão já tem tudo), aparece depois dela
-// e se recolhe enquanto a pessoa desce lendo, voltando ao menor gesto para cima.
+const navLinks = [
+  { label: 'Cardápio', href: '#cardapio' },
+  { label: 'Encomendas', href: '#encomendas' },
+  { label: 'Como pedir', href: '#como-pedir' },
+];
+
+// Ilha flutuante: aparece já na capa e se recolhe enquanto a pessoa desce lendo,
+// voltando ao menor gesto para cima.
 export const Nav = () => {
   const [open, setOpen] = useState(false);
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(true);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, 'change', (y) => {
     const prev = scrollY.getPrevious() ?? 0;
-    const pastHero = y > window.innerHeight * 0.75;
-    setShown(pastHero && (y < prev || y - prev < 2));
+    setShown(y < 120 || y < prev || y - prev < 2);
   });
 
   // menu aberto: trava a rolagem, foca o primeiro link, Esc fecha e devolve o foco,
@@ -54,22 +59,22 @@ export const Nav = () => {
         style={{ top: 'max(1rem, env(safe-area-inset-top))' }}
         className="fixed inset-x-0 z-50 flex justify-center px-4"
       >
-        <div className={`flex items-center gap-2 rounded-full bg-papel/95 p-1.5 pl-2 ${floatShadow} ring-1 ring-tinta/6`}>
+        <div className={`flex items-center gap-2 rounded-full bg-white/95 p-1.5 pl-2 ${floatShadow}`}>
           <a href="#" aria-label="Jeni Ateliê, voltar ao início" className="flex items-center gap-2.5 rounded-full py-1 pr-3 pl-1">
             <img src={selo} alt="" width={40} height={40} className="size-10" />
-            <span translate="no" className="font-display text-[1.375rem] leading-none">Jeni Ateliê</span>
+            <span translate="no" className="font-display text-[1.375rem] leading-none font-semibold">Jeni Ateliê</span>
           </a>
           <ul className="hidden items-center lg:flex">
-            {navLinks.slice(0, 4).map(({ label, href }) => (
+            {navLinks.map(({ label, href }) => (
               <li key={href}>
-                <a href={href} className="flex min-h-11 items-center rounded-full px-4 text-note font-medium text-tinta-suave transition-colors duration-300 hover:bg-papel-2 hover:text-tinta">
+                <a href={href} className="flex min-h-11 items-center rounded-full px-4 text-note font-semibold text-chocolate-suave transition-colors duration-300 hover:bg-rosa hover:text-chocolate">
                   {label}
                 </a>
               </li>
             ))}
           </ul>
-          <a href="#caixa" className="hidden rounded-full bg-cobre px-5 py-3 text-note font-semibold text-papel transition-[background-color,transform] duration-500 ease-[var(--ease-drawer)] hover:bg-tinta active:scale-[0.97] sm:block">
-            Montar caixa
+          <a href="#cardapio" className="hidden min-h-11 items-center rounded-full bg-morango-forte px-5 text-note font-bold text-white transition-[background-color,transform] duration-500 ease-[var(--ease-drawer)] hover:bg-chocolate active:scale-[0.97] sm:flex">
+            Pedir
           </a>
           <button
             ref={toggleRef}
@@ -78,10 +83,10 @@ export const Nav = () => {
             aria-label={open ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={open}
             aria-controls="menu-tela"
-            className="relative grid size-11 place-items-center rounded-full bg-papel-2 transition-transform duration-300 active:scale-95 lg:hidden"
+            className="relative grid size-11 place-items-center rounded-full bg-rosa transition-transform duration-300 active:scale-95 lg:hidden"
           >
-            <span aria-hidden="true" className={`absolute h-[1.5px] w-5 bg-tinta transition-transform duration-500 ease-[var(--ease-drawer)] ${open ? 'rotate-45' : '-translate-y-[4px]'}`} />
-            <span aria-hidden="true" className={`absolute h-[1.5px] w-5 bg-tinta transition-transform duration-500 ease-[var(--ease-drawer)] ${open ? '-rotate-45' : 'translate-y-[4px]'}`} />
+            <span aria-hidden="true" className={`absolute h-[1.5px] w-5 bg-chocolate transition-transform duration-500 ease-[var(--ease-drawer)] ${open ? 'rotate-45' : '-translate-y-[4px]'}`} />
+            <span aria-hidden="true" className={`absolute h-[1.5px] w-5 bg-chocolate transition-transform duration-500 ease-[var(--ease-drawer)] ${open ? '-rotate-45' : 'translate-y-[4px]'}`} />
           </button>
         </div>
       </m.nav>
@@ -98,24 +103,24 @@ export const Nav = () => {
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.8, ease: easeDrawer }}
-            className="on-dark fixed inset-0 z-40 flex flex-col justify-end bg-cacau px-6 pt-28 pb-[max(2.5rem,env(safe-area-inset-bottom))] text-papel lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col justify-end bg-creme px-6 pt-28 pb-[max(2.5rem,env(safe-area-inset-bottom))] text-chocolate lg:hidden"
           >
             <m.ul initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.06, delayChildren: 0.25 } } }}>
-              {navLinks.map(({ label, href }) => (
+              {[...navLinks, { label: 'Dúvidas', href: '#duvidas' }].map(({ label, href }) => (
                 <li key={href} className="overflow-hidden">
                   <m.a
                     href={href}
                     onClick={() => setOpen(false)}
                     variants={{ hidden: { y: '110%' }, show: { y: 0, transition: { duration: 0.9, ease: easeOutExpo } } }}
-                    className="block py-2 font-display text-[clamp(2.5rem,11vw,3.5rem)] leading-[1.05] tracking-[-0.02em]"
+                    className="block py-2 font-display text-[clamp(2.5rem,11vw,3.5rem)] leading-[1.05] font-semibold tracking-[-0.02em] transition-colors hover:text-morango"
                   >
                     {label}
                   </m.a>
                 </li>
               ))}
             </m.ul>
-            <m.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.6 } }} className="mt-10 text-note text-papel/70">
-              Encomendas de terça a sábado, com sete dias de antecedência.
+            <m.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.6 } }} className="mt-10 text-note text-chocolate-suave">
+              Entrega grátis na {areas.join(' e no ')}.
             </m.p>
           </m.div>
         )}
