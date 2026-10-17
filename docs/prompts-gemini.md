@@ -99,3 +99,59 @@ Use this exact dessert as the reference: same layers of sponge cake, creamy flan
 ```
 Use this exact dessert as the reference: same chocolate-covered strawberry dessert with chopped peanuts and chocolate drizzle. Recreate it as bright, airy food photography for a cute premium home bakery: out of the plastic box and the hand, placed on a soft blush-pink surface (#FFD9DF) against a seamless vanilla-cream background (#FFF4EC), with one piece cut to show the fresh red strawberry inside and a couple of fresh strawberries beside it. Soft diffused daylight from the left, glossy chocolate highlights, camera about 30 degrees above, shallow depth of field. Vertical 3:4. No text, no logos, no hands.
 ```
+
+---
+
+## Formato largo: fotos que se dissolvem na página (anexe a foto indicada)
+
+Para tirar as fotos das caixas: cada foto fica larga, com o doce de um lado e o resto vazio, no mesmo creme do site. Assim ela vira o fundo da seção (como a capa) e o texto fica no lado vazio, sem borda.
+
+Em cada item, anexe a foto indicada (para o Gemini manter o mesmo doce), escolha "16:9" e baixe na maior resolução. Salve na pasta `Fotos Gemini/` com o nome indicado e me avise.
+
+### 13. Bolo inteiro (Tem festa vindo?): `bolo-inteiro-largo` (anexe `jeni-atelie/src/assets/img/gerada/bolo-inteiro.jpg`)
+
+```
+Recreate the dessert from the attached photo: the same whole layered vanilla cake with strawberry filling, white cream frosting, white-chocolate-dipped strawberries on top and a slice served on a small plate beside it. Keep the dessert looking exactly the same. Wide horizontal 16:9 photo, at least 2400 pixels wide. Place the dessert in the LEFT half of the frame and leave the RIGHT half completely empty for text. Background: one seamless vanilla-cream infinity-cove backdrop (#FFF4EC) with no horizon line, no table edge and no wall corner; the surface under the dessert is a very soft blush pink (#FFD9DF) that fades smoothly into the same cream toward every edge of the frame, so all four edges of the photo are plain cream and the image blends invisibly into a website with a #FFF4EC background. Bright, airy, joyful food photography for a cute premium Brazilian home bakery: soft diffused morning light from the left, gentle soft shadow only right under the dessert, camera about 30 degrees above, sharp focus on the dessert. Nothing in the empty area: no props, no crumbs, no leaves, no shadows of objects. No text, no logos, no hands, no people.
+```
+
+### 14. Fileira de potes (Um recado da Jeni): `potes-largo` (anexe `jeni-atelie/src/assets/img/gerada/potes-mesa.jpg`)
+
+```
+Recreate the dessert from the attached photo: the same diagonal row of five square plastic dessert cups with layered cake and cream, lids on, receding into the frame. Keep the dessert looking exactly the same. Wide horizontal 16:9 photo, at least 2400 pixels wide. Place the dessert in the LEFT half of the frame and leave the RIGHT half completely empty for text. Background: one seamless vanilla-cream infinity-cove backdrop (#FFF4EC) with no horizon line, no table edge and no wall corner; the surface under the dessert is a very soft blush pink (#FFD9DF) that fades smoothly into the same cream toward every edge of the frame, so all four edges of the photo are plain cream and the image blends invisibly into a website with a #FFF4EC background. Bright, airy, joyful food photography for a cute premium Brazilian home bakery: soft diffused morning light from the left, gentle soft shadow only right under the dessert, camera about 30 degrees above, sharp focus on the dessert. Nothing in the empty area: no props, no crumbs, no leaves, no shadows of objects. No text, no logos, no hands, no people.
+```
+
+### 15. Bolos de pote (cardápio): `card-bolos-de-pote` (anexe `jeni-atelie/src/assets/img/gerada/bolo-de-pote.jpg`)
+
+```
+Recreate the dessert from the attached photo: the same square clear dessert cup with layers of chocolate cake and passion fruit mousse topped with glossy passion fruit seeds, with half a passion fruit beside it. Keep the dessert looking exactly the same. Wide horizontal 16:9 photo, at least 2400 pixels wide. Place the dessert in the LEFT 40 percent of the frame and leave the RIGHT 60 percent completely empty for text. Background: one seamless vanilla-cream infinity-cove backdrop (#FFF4EC) with no horizon line, no table edge and no wall corner; the surface under the dessert is a very soft blush pink (#FFD9DF) that fades smoothly into the same cream toward every edge of the frame, so all four edges of the photo are plain cream and the image blends invisibly into a website with a #FFF4EC background. Bright, airy, joyful food photography for a cute premium Brazilian home bakery: soft diffused morning light from the left, gentle soft shadow only right under the dessert, camera about 30 degrees above, sharp focus on the dessert. Nothing in the empty area: no props, no crumbs, no leaves, no shadows of objects. No text, no logos, no hands, no people.
+```
+
+### 16. Brownies (cardápio): `card-brownies` (anexe `jeni-atelie/src/assets/img/gerada/brownies.jpg`)
+
+```
+Recreate the dessert from the attached photo: the same four thick fudgy brownie squares: classic, Ferrero Rocher with hazelnuts, Ninho white frosting and dark cocoa. Keep the dessert looking exactly the same. Wide horizontal 16:9 photo, at least 2400 pixels wide. Place the dessert in the LEFT 40 percent of the frame and leave the RIGHT 60 percent completely empty for text. Background: one seamless vanilla-cream infinity-cove backdrop (#FFF4EC) with no horizon line, no table edge and no wall corner; the surface under the dessert is a very soft blush pink (#FFD9DF) that fades smoothly into the same cream toward every edge of the frame, so all four edges of the photo are plain cream and the image blends invisibly into a website with a #FFF4EC background. Bright, airy, joyful food photography for a cute premium Brazilian home bakery: soft diffused morning light from the left, gentle soft shadow only right under the dessert, camera about 30 degrees above, sharp focus on the dessert. Nothing in the empty area: no props, no crumbs, no leaves, no shadows of objects. No text, no logos, no hands, no people.
+```
+
+### 17. Fatias (cardápio): `card-fatias` (anexe `jeni-atelie/src/assets/img/gerada/fatia.jpg`)
+
+```
+Recreate the dessert from the attached photo: the same generous slice of layered cake on a small plate with a fork. Keep the dessert looking exactly the same. Wide horizontal 16:9 photo, at least 2400 pixels wide. Place the dessert in the LEFT 40 percent of the frame and leave the RIGHT 60 percent completely empty for text. Background: one seamless vanilla-cream infinity-cove backdrop (#FFF4EC) with no horizon line, no table edge and no wall corner; the surface under the dessert is a very soft blush pink (#FFD9DF) that fades smoothly into the same cream toward every edge of the frame, so all four edges of the photo are plain cream and the image blends invisibly into a website with a #FFF4EC background. Bright, airy, joyful food photography for a cute premium Brazilian home bakery: soft diffused morning light from the left, gentle soft shadow only right under the dessert, camera about 30 degrees above, sharp focus on the dessert. Nothing in the empty area: no props, no crumbs, no leaves, no shadows of objects. No text, no logos, no hands, no people.
+```
+
+### 18. Coxinhas de morango (cardápio): `card-coxinhas` (anexe `jeni-atelie/src/assets/img/gerada/coxinhas.jpg`)
+
+```
+Recreate the dessert from the attached photo: the same Brazilian strawberry coxinhas: whole strawberries wrapped in brigadeiro and covered in chocolate, one cut in half to show the strawberry. Keep the dessert looking exactly the same. Wide horizontal 16:9 photo, at least 2400 pixels wide. Place the dessert in the LEFT 40 percent of the frame and leave the RIGHT 60 percent completely empty for text. Background: one seamless vanilla-cream infinity-cove backdrop (#FFF4EC) with no horizon line, no table edge and no wall corner; the surface under the dessert is a very soft blush pink (#FFD9DF) that fades smoothly into the same cream toward every edge of the frame, so all four edges of the photo are plain cream and the image blends invisibly into a website with a #FFF4EC background. Bright, airy, joyful food photography for a cute premium Brazilian home bakery: soft diffused morning light from the left, gentle soft shadow only right under the dessert, camera about 30 degrees above, sharp focus on the dessert. Nothing in the empty area: no props, no crumbs, no leaves, no shadows of objects. No text, no logos, no hands, no people.
+```
+
+### 19. Surpresa de uva (cardápio): `card-uva` (anexe `jeni-atelie/src/assets/img/gerada/surpresa-de-uva.jpg`)
+
+```
+Recreate the dessert from the attached photo: the same white brigadeiro bonbons wrapped around green grapes in small paper cups, one cut in half to show the grape. Keep the dessert looking exactly the same. Wide horizontal 16:9 photo, at least 2400 pixels wide. Place the dessert in the LEFT 40 percent of the frame and leave the RIGHT 60 percent completely empty for text. Background: one seamless vanilla-cream infinity-cove backdrop (#FFF4EC) with no horizon line, no table edge and no wall corner; the surface under the dessert is a very soft blush pink (#FFD9DF) that fades smoothly into the same cream toward every edge of the frame, so all four edges of the photo are plain cream and the image blends invisibly into a website with a #FFF4EC background. Bright, airy, joyful food photography for a cute premium Brazilian home bakery: soft diffused morning light from the left, gentle soft shadow only right under the dessert, camera about 30 degrees above, sharp focus on the dessert. Nothing in the empty area: no props, no crumbs, no leaves, no shadows of objects. No text, no logos, no hands, no people.
+```
+
+### 20. Salgado: empadão (cardápio): `card-empadao` (anexe `jeni-atelie/src/assets/img/gerada/empadao.jpg`)
+
+```
+Recreate the dessert from the attached photo: the same chicken pot pie with golden lattice crust in a small foil tray. Keep the dessert looking exactly the same. Wide horizontal 16:9 photo, at least 2400 pixels wide. Place the dessert in the LEFT 40 percent of the frame and leave the RIGHT 60 percent completely empty for text. Background: one seamless vanilla-cream infinity-cove backdrop (#FFF4EC) with no horizon line, no table edge and no wall corner; the surface under the dessert is a very soft blush pink (#FFD9DF) that fades smoothly into the same cream toward every edge of the frame, so all four edges of the photo are plain cream and the image blends invisibly into a website with a #FFF4EC background. Bright, airy, joyful food photography for a cute premium Brazilian home bakery: soft diffused morning light from the left, gentle soft shadow only right under the dessert, camera about 30 degrees above, sharp focus on the dessert. Nothing in the empty area: no props, no crumbs, no leaves, no shadows of objects. No text, no logos, no hands, no people.
+```
