@@ -41,7 +41,7 @@ export const menu: MenuGroup[] = [
     prefix: 'Bolo de pote',
     blurb: 'Camadas de massa fofinha e creme até a borda do pote. Dá para comer de colher, gelado.',
     tone: 'caramelo',
-    photos: ['jeni-pote', 'gerada-pote'],
+    photos: ['gerada-pote', 'jeni-pote'],
     items: [
       { id: 'pote-choco-maracuja', name: 'Chocolate com maracujá', price: 22 },
       { id: 'pote-branca-maracuja', name: 'Massa branca com maracujá', price: 22 },
@@ -112,7 +112,7 @@ export const menu: MenuGroup[] = [
     prefix: '',
     blurb: 'Para equilibrar a mesa: massa que desmancha e recheio cremoso de frango.',
     tone: 'manteiga',
-    photos: ['jeni-empadao', 'gerada-empadao'],
+    photos: ['gerada-empadao', 'jeni-empadao'],
     items: [{ id: 'empadao-frango', name: 'Empadão de frango', price: 18 }],
   },
 ];
